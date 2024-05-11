@@ -1,0 +1,123 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/common/taglib.jsp"%>
+<c:url var="APIurl" value="/api-admin-phieuNhap"/>
+<c:url var ="NewURL" value="/admin-phieuNhap"/>
+<html>
+<head>
+    <title>Chỉnh sửa phiếu nhập </title>
+</head>
+<body>
+<div class="main-content ml-2 pr-2">
+    <div class="main-content-inner">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Trang dành cho Admin</a>
+                </li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+        <div class="page-content">
+            <div class="row">
+			    <div class="col-sm-12">
+			        <c:if test="${not empty messageResponse}">
+			            <div class="alert alert-${alert}">
+			                ${messageResponse}
+			            </div>
+			        </c:if> 
+			    </div>
+			</div>
+				<form id="formSubmit" class="row pr-5 pl-5">
+					<c:if test="${not empty model.maPN}">
+					    <div class="form-group col-sm-12">
+					        <label class="control-label no-padding-right">Mã phiếu nhập</label>
+					       <input type="text" class="form-control col-sm-6" placeholder="Nhập mã phiếu nhập" id="maPN" name="maPN" value="${model.maPN}" readonly />				
+					    </div>
+				  </c:if> 
+				    <div class="form-group col-sm-6">
+				        <label class="control-label no-padding-right">Nhà cung cấp </label>
+				        <select class="form-control" id="maNCC" name="maNCC">
+                             <c:if test="${empty model.maPN}">
+                                 <option value="">Chọn nhà cung cấp</option>
+                                 <c:forEach var="item" items="${NhaCungCap}">
+                                     <option value="${item.maNCC}">${item.tenNCC}</option>
+                                 </c:forEach>
+                             </c:if>
+                             <c:if test="${not empty model.maPN}">
+                                 <option value="">Chọn chọn mà cung cấp</option>
+                                 <c:forEach var="item" items="${NhaCungCap}">
+                                     <option value="${item.maNCC}" <c:if test="${item.maNCC == model.maNCC}">selected="selected"</c:if>>
+                                             ${item.tenNCC}
+                                     </option>
+                                 </c:forEach>
+                             </c:if>
+                         </select>
+				    </div>
+				    <div class="form-group col-sm-12 pt-5">
+				        <c:if test="${not empty model.maPN}">
+				            <input type="button" class="btn btn-white btn-warning btn-bold" value="Cập nhật phiếu nhập" id="btnAddOrUpdateNew"/>
+				        </c:if>
+				        <c:if test="${empty model.maPN}">
+				            <input type="button" class="btn btn-white btn-warning btn-bold" value="Thêm phiếu nhập" id="btnAddOrUpdateNew"/>
+				        </c:if>
+				    </div>
+				    <input type="hidden" value="${model.maPN}" id="maPN" name="maPN"/>
+				</form>
+        </div>
+    </div>
+</div>
+<script>
+$('#btnAddOrUpdateNew').click(function (e) {
+    e.preventDefault();
+    var data = {};
+    var formData = $('#formSubmit').serializeArray();
+    $.each(formData, function (i, v) {
+        data[""+v.name+""] = v.value;
+        console.log(v.name+" "+v.value)
+    });
+    
+    var id = $('#btnAddOrUpdateNew').val();
+    if (id == "Thêm phiếu nhập") {
+        addNew(data);
+    } else {
+        updateNew(data);
+    }
+});
+function addNew(data) {
+    $.ajax({
+        url: '${APIurl}',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: function (result) {
+        	window.location.href = "${NewURL}?type=list&page=1&maxPageItem=8&sortName=maPN&sortBy=desc&message=insert_success";
+        },
+        error: function (error) {
+        	console.log(error)
+        	window.location.href = "${NewURL}?type=list&page=1&maxPageItem=8&sortName=maPN&sortBy=desc&message=error_system";
+        }
+    });
+}
+function updateNew(data) {
+    $.ajax({
+        url: '${APIurl}',
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: function (result) {
+        	window.location.href = "${NewURL}?type=edit&maPN="+result.maPN+"&message=update_success";
+        },
+        error: function (error) {
+        	window.location.href = "${NewURL}?type=list&page=1&maxPageItem=8&sortName=maPN&sortBy=desc&message=error_system";
+        }
+    });
+}
+    
+</script>
+</body>
+</html>

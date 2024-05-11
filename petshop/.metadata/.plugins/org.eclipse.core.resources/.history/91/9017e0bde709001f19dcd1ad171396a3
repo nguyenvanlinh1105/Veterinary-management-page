@@ -1,0 +1,5 @@
+package com.petshop.mapper;
+
+public class NhaCungCapMapper implements RowMapper<NhaCungCapModel> {
+
+}

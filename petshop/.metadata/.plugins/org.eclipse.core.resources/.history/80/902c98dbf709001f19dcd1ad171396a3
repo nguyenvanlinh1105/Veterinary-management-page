@@ -1,0 +1,25 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+
+import com.petshop.dao.INhaCungCapDAO;
+import com.petshop.model.NhaCungCapModel;
+import com.petshop.paging.Pageble;
+
+public class NhaCungCapDAO implements INhaCungCapDAO{
+
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap(Pageble pageble) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getToltalItemNhaCungCap() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+}

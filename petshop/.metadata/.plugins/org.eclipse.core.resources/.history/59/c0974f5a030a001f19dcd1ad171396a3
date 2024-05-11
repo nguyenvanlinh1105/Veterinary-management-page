@@ -1,0 +1,22 @@
+package com.petshop.service.impl;
+
+import java.util.List;
+
+import com.petshop.model.ChiTietPhieuNhapModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.IChiTietPhieuNhapService;
+
+public class ChiTietPhieuNhapService  implements IChiTietPhieuNhapService{
+
+	@Override
+	public List<ChiTietPhieuNhapModel> findAllChiTietPhieuNhap(Pageble pageble) {
+		return null;
+	}
+
+	@Override
+	public int getToltalItemChiTietPhieuNhap() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

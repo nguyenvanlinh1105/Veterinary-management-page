@@ -1,0 +1,95 @@
+
+thg 4 10, 2024 09:21:04.16 NEW SESSION
+thg 4 10, 2024 09:21:04.16 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+thg 4 10, 2024 10:31:16.76 [35804:21508:0410/103116.749:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+thg 4 10, 2024 10:36:38.96 [35804:21508:0410/103638.963:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+
+thg 4 10, 2024 13:56:28.86 NEW SESSION
+thg 4 10, 2024 13:56:28.86 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 4 19, 2024 07:39:48.59 NEW SESSION
+thg 4 19, 2024 07:39:48.59 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 4 26, 2024 08:20:54.75 NEW SESSION
+thg 4 26, 2024 08:20:54.75 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 4 29, 2024 23:27:06.93 NEW SESSION
+thg 4 29, 2024 23:27:06.93 Created TensorFlow Lite XNNPACK delegate for CPU.
+thg 4 30, 2024 24:54:45.45 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 4 30, 2024 08:12:45.84 NEW SESSION
+thg 4 30, 2024 08:12:45.84 Created TensorFlow Lite XNNPACK delegate for CPU.
+thg 4 30, 2024 10:12:32.47 [17848:10192:0430/101232.477:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+thg 4 30, 2024 10:12:41.06 [17848:10192:0430/101241.066:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+thg 4 30, 2024 10:12:50.05 [17848:10192:0430/101250.054:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+thg 4 30, 2024 10:12:53.45 [17848:10192:0430/101253.452:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+thg 4 30, 2024 10:19:21.51 [17848:10192:0430/101921.513:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+thg 4 30, 2024 10:26:39.19 [17848:10192:0430/102639.193:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+thg 4 30, 2024 21:37:00.15 NEW SESSION
+thg 4 30, 2024 21:37:00.15 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 5 04, 2024 23:20:14.56 NEW SESSION
+thg 5 04, 2024 23:20:14.56 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 5 04, 2024 23:34:30.39 NEW SESSION
+thg 5 04, 2024 23:34:30.39 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 5 06, 2024 19:36:47.10 NEW SESSION
+thg 5 06, 2024 19:36:47.10 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 5 06, 2024 19:41:16.31 NEW SESSION
+thg 5 06, 2024 19:41:16.32 Created TensorFlow Lite XNNPACK delegate for CPU.
+thg 5 06, 2024 19:57:23.71 [7320:10804:0506/195723.713:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+thg 5 06, 2024 20:55:59.83 [7320:17564:0506/205559.835:ERROR:get_updates_processor.cc(263)] PostClientToServerMessage() failed during GetUpdates with error Network error (ERR_NETWORK_IO_SUSPENDED)
+thg 5 06, 2024 20:56:29.72 [7320:10804:0506/205629.727:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+thg 5 06, 2024 21:22:48.35 [7320:10804:0506/212248.351:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -109
+thg 5 06, 2024 21:27:38.89 [7320:7132:0506/212738.892:ERROR:extension_host.cc(416)] Received EventAck for extension aapbdbdomjkkjkaonfhkkikfgjllcleb for an unknown event.
+thg 5 06, 2024 21:27:38.89 [7320:7132:0506/212738.892:ERROR:extension_host.cc(416)] Received EventAck for extension aapbdbdomjkkjkaonfhkkikfgjllcleb for an unknown event.
+thg 5 06, 2024 21:27:38.89 [7320:7132:0506/212738.892:ERROR:extension_host.cc(416)] Received EventAck for extension aapbdbdomjkkjkaonfhkkikfgjllcleb for an unknown event.
+thg 5 06, 2024 21:27:38.89 [7320:7132:0506/212738.892:ERROR:extension_host.cc(416)] Received EventAck for extension aapbdbdomjkkjkaonfhkkikfgjllcleb for an unknown event.
+thg 5 06, 2024 21:27:38.89 [7320:7132:0506/212738.893:ERROR:extension_host.cc(416)] Received EventAck for extension aapbdbdomjkkjkaonfhkkikfgjllcleb for an unknown event.
+thg 5 06, 2024 21:33:23.39 [7320:10804:0506/213323.392:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+thg 5 06, 2024 21:51:57.75 [7320:7132:0506/215157.742:ERROR:device_event_log_impl.cc(195)] [21:51:57.742] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+thg 5 06, 2024 23:07:17.84 [7320:7132:0506/230717.838:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+thg 5 06, 2024 23:33:09.52 [7320:7132:0506/233309.509:ERROR:interface_endpoint_client.cc(707)] Message 6 rejected by interface blink.mojom.WidgetHost
+thg 5 06, 2024 23:33:09.53 [7320:7132:0506/233309.509:ERROR:interface_endpoint_client.cc(707)] Message 7 rejected by interface blink.mojom.WidgetHost
+thg 5 06, 2024 23:33:29.32 [7320:7132:0506/233329.326:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+thg 5 06, 2024 23:36:47.35 [7320:7132:0506/233647.356:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+thg 5 08, 2024 17:13:09.26 NEW SESSION
+thg 5 08, 2024 17:13:09.26 Created TensorFlow Lite XNNPACK delegate for CPU.
+thg 5 08, 2024 17:14:41.42 [12660:10524:0508/171441.429:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+thg 5 08, 2024 17:19:33.66 [12660:10524:0508/171933.668:ERROR:device_event_log_impl.cc(195)] [17:19:33.673] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+thg 5 08, 2024 18:01:21.27 [12660:8640:0508/180121.271:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+thg 5 08, 2024 18:11:13.35 [12660:8640:0508/181113.352:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+
+thg 5 08, 2024 18:17:30.09 NEW SESSION
+thg 5 08, 2024 18:17:30.09 Created TensorFlow Lite XNNPACK delegate for CPU.
+thg 5 08, 2024 18:33:53.43 [9436:12684:0508/183353.430:ERROR:device_event_log_impl.cc(195)] [18:33:53.419] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+thg 5 08, 2024 18:34:45.56 [9436:12684:0508/183445.562:ERROR:fallback_task_provider.cc(127)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+thg 5 08, 2024 18:35:05.03 [9436:12684:0508/183505.039:ERROR:fallback_task_provider.cc(127)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+thg 5 08, 2024 18:35:09.24 [9436:12684:0508/183509.240:ERROR:fallback_task_provider.cc(127)] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/739782.
+thg 5 08, 2024 19:05:03.56 [9436:1380:0508/190503.565:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
+thg 5 08, 2024 19:15:53.00 [9436:1380:0508/191553.009:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -7
+thg 5 08, 2024 19:16:07.55 [9436:12684:0508/191607.553:ERROR:device_event_log_impl.cc(195)] [19:16:07.551] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+thg 5 08, 2024 19:51:03.72 [9436:1380:0508/195103.724:ERROR:mcs_client.cc(749)] Received close command, resetting connection.
+thg 5 08, 2024 19:54:02.01 [9436:12684:0508/195402.017:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+thg 5 08, 2024 20:11:03.88 [9436:1380:0508/201103.866:ERROR:mcs_client.cc(749)] Received close command, resetting connection.
+thg 5 08, 2024 20:14:31.46 [9436:12684:0508/201431.459:ERROR:device_event_log_impl.cc(195)] [20:14:31.459] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+thg 5 08, 2024 20:16:29.04 [9436:12684:0508/201629.045:ERROR:device_event_log_impl.cc(195)] [20:16:29.044] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+thg 5 08, 2024 20:37:40.44 [9436:12684:0508/203740.446:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+thg 5 08, 2024 21:02:19.41 [9436:12684:0508/210219.408:ERROR:device_event_log_impl.cc(195)] [21:02:19.408] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: Element not found. (0x490)
+
+thg 5 09, 2024 22:52:05.46 NEW SESSION
+thg 5 09, 2024 22:52:05.46 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+thg 5 10, 2024 07:51:35.40 NEW SESSION
+thg 5 10, 2024 07:51:35.40 [16716:29672:0510/075135.404:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+thg 5 10, 2024 07:51:36.65 Created TensorFlow Lite XNNPACK delegate for CPU.
+thg 5 10, 2024 07:52:04.82 [16716:29672:0510/075204.820:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+thg 5 10, 2024 07:52:51.18 [16716:29672:0510/075251.188:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+thg 5 10, 2024 07:54:46.73 [16716:29672:0510/075446.731:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+thg 5 10, 2024 07:58:42.28 [16716:29672:0510/075842.289:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+thg 5 10, 2024 08:05:20.62 [16716:29672:0510/080520.624:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106
+thg 5 10, 2024 08:15:20.63 [16716:29672:0510/081520.635:ERROR:connection_factory_impl.cc(434)] Failed to connect to MCS endpoint with error -106

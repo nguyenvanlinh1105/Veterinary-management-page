@@ -1,0 +1,9 @@
+package com.petshop.dao;
+
+import java.util.List;
+
+import com.petshop.model.DonHangCartModel;
+
+public class IDonHangCartDAO {
+	List<DonHangCartModel> findAllDonHangCartForId();
+}

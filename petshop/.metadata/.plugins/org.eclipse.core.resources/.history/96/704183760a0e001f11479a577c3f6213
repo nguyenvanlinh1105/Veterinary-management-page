@@ -1,0 +1,8 @@
+package com.petshop.dao.impl;
+
+import com.petshop.dao.IDatDichVuDAO;
+import com.petshop.model.DatDichVuModel;
+
+public class DatDichVuDAO extends AbstractDAO<DichVuDAO> implements IDatDichVuDAO{
+
+}

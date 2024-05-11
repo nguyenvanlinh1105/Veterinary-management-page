@@ -1,0 +1,8 @@
+package com.petshop.model;
+
+public class InforPetUserModel extends AbstractModel<InforPetUserModel>{
+	private String idKhachHang;
+	
+	
+	
+}

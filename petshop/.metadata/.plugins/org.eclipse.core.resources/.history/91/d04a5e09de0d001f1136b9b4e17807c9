@@ -1,0 +1,38 @@
+package com.petshop.dao.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.petshop.dao.IDonHangCartDAO;
+import com.petshop.mapper.DonHangCartMapper;
+import com.petshop.model.DonHangCartModel;
+public class DonHangCartDAO extends AbstractDAO<DonHangCartModel> implements IDonHangCartDAO{
+
+	private String idKH;
+	private List<DonHangCartModel> donHangCartList = new ArrayList<>();
+	@Override
+	public List<DonHangCartModel> findAllDonHangCartForId(String idKhachHang) {
+		idKH=idKhachHang;
+		 String sql = "{CALL GetInvoiceInfo (?) }";
+		 return query(sql.toString(), new DonHangCartMapper(),idKhachHang);
+	}
+
+	public DonHangCartDAO() {
+        donHangCartList = this.findAllDonHangCartForId(idKH);
+    }
+
+	@Override
+	public Float tinhTongTien() {
+		Float tongTien = (float) 0;
+        for (DonHangCartModel donHangCart : donHangCartList) {
+        	System.out.print(donHangCart);
+            tongTien += donHangCart.getThanhTien();
+        }
+        return tongTien;
+	}
+	
+	
+	
+	
+
+}

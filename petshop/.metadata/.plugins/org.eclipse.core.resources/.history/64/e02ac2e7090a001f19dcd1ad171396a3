@@ -1,0 +1,23 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+
+import com.petshop.dao.IChiTietPhieuNhapDAO;
+import com.petshop.model.ChiTietPhieuNhapModel;
+import com.petshop.paging.Pageble;
+
+public class ChiTietPheuNhapDAO implements IChiTietPhieuNhapDAO{
+
+	@Override
+	public List<ChiTietPhieuNhapModel> findAllChiTietPhieuNhap(Pageble pagebleO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getToltalItemChiTietPhieuNhap() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

@@ -1,0 +1,33 @@
+package com.petshop.service.impl;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import com.petshop.dao.IPhieuNhapDAO;
+import com.petshop.model.PhieuNhapModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.IPhieuNhapService;
+
+public class PhieuNhapService implements IPhieuNhapService {
+	@Inject 
+	private IPhieuNhapDAO phieuNhapDAO;
+	@Override
+	public List<PhieuNhapModel> findAllPhieuNhap(Pageble pageble) {
+		
+		return phieuNhapDAO.findAllPhieuNhap(pageble);
+	}
+
+	@Override
+	public Integer getToltalItemPhieuNhap() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PhieuNhapModel findOnePhieuNhap(String maPN) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

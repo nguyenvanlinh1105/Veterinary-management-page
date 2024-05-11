@@ -1,0 +1,114 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+   <%@include file="/common/taglib.jsp"%>
+       <c:url var="APIurl" value="/api-web-pet"/>
+<c:url var ="CartURL" value="/web-cart"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container p-5 pt-5 mx-auto">
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-7 pl-5">
+            <h3 class="text-center">Hãy thêm thật nhiều pet để PETSHOP có thể thay bạn chăm sóc chúng nhé 🥰 !</h3>
+                <div class="card">
+						<form id="formSubmit"class="card-body ">
+							<div class="row mb-3">
+								<div class="col-sm-3 align-self-center">
+									<h6 class="mb-0">Tên thú cưng :</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" id="userName" name="userName" class="form-control" value="${model.tenThuCung}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3 align-self-center">
+									<h6 class="mb-0">Độ tuổi:</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" id="tenuser" name="tenuser"  class="form-control" value="${model.tuoi} ">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3 align-self-center">
+									<h6 class="mb-0">Loại mèo :</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text"  id="email" name="email"  class="form-control" value="${model.loaiThuCung}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3 align-self-center">
+									<h6 class="mb-0">Giới tính: </h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" id="gioiTinh" name="gioiTinh" class="form-control" value="${model.gioiTinh}">
+									<span>*Giới tính:Đực, Cái</span>
+								</div>
+							</div>
+							
+							<div class="row pt-5">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-9 text-secondary">
+									<c:if test="${empty model.idThuCung}">
+										<input type="button" id="btnUser" class="btn btn-primary px-4" value="Thêm thú cưng">
+									 </c:if>
+									 <c:if test="${not empty model.idThuCung}">
+									 	<input type="button" id="btnUser" class="btn btn-primary px-4" value="Cập nhật thú cưng">
+									 </c:if>
+								</div>
+							</div>
+							<input type="hidden" value="${model.idThuCung}" id="idThuCung" name="idThuCung"/>
+						</form>
+					</div>
+					
+				</div>
+				 <div class="col-lg-5">
+				 <div class="d-flex flex-column align-items-center text-center">
+				            <img src="template/web/img/user_add_cat.jpg">
+                    <div class="">
+                      <p class="text-secondary">MEWWWWWW🥰🥰</p>
+                      <p class="text-muted font-size-sm">Khi được cung cấp thông tin về mèo, chúng tôi sẽ tận dụng để tạo ra các gợi ý sản phẩm và dịch vụ độc đáo và phù hợp nhất dành cho mèo của bạn. Với mỗi thông tin đó, chúng tôi hy vọng sẽ giúp nâng cao chất lượng dịch vụ và mang lại hạnh phúc cho những người bạn bốn chân của chúng ta.</p>
+                      
+                    </div>
+                  </div>
+				 </div>
+   			</div>
+ 			</div>
+   	 </div>
+   	  
+        	<script type="text/javascript">
+	$('#btnUser').click(function (e) {
+	    e.preventDefault();
+	    var data = {};
+	    var formData = $('#formSubmit').serializeArray();
+	    $.each(formData, function (i, v) {
+	        data[""+v.name+""] = v.value;
+	        console.log(v.name+" "+v.value)
+	    });
+	    //insertPetUser(data)
+	})
+
+		 function insertPetUser(data) {
+	        $.ajax({
+	            url: '${APIurl}',
+	            type: 'POST',
+	            contentType: 'application/json',
+	            data: JSON.stringify(data),
+	            success: function (result) {
+	            	window.location.href = "${CartURL}?message=dhtc_success";
+	            },
+	            error: function (error) {
+	            	window.location.href = "${CartURL}?message=dhtb_lose";
+	            }
+	        });
+		 }
+	
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+
+import com.petshop.dao.INhaCungCapDAO;
+import com.petshop.mapper.NhaCungCapMapper;
+import com.petshop.model.NhaCungCapModel;
+import com.petshop.paging.Pageble;
+
+public class NhaCungCapDAO extends AbstractDAO<NhaCungCapModel>implements INhaCungCapDAO{
+
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap(Pageble pageble) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM NhaCungCap");
+		if(pageble.getSorter() !=null) {
+			sql.append(" ORDER BY ")
+			.append(pageble.getSorter().getSortName())
+			.append(" ")
+			.append(pageble.getSorter().getSortBy());
+		}
+		 if (pageble.getOffset() != null && pageble.getLimit() != null) {
+		        sql.append(" OFFSET ")
+		           .append(pageble.getOffset())
+		           .append(" ROWS FETCH NEXT ")
+		           .append(pageble.getLimit())
+		           .append(" ROWS ONLY");
+		    }
+
+		return query(sql.toString(), new NhaCungCapMapper());
+	}
+
+	@Override
+	public int getToltalItemNhaCungCap() {
+		String sql = "Select count(*) from dbo.NhaCungCap";
+		return count(sql);
+	}
+
+
+
+}

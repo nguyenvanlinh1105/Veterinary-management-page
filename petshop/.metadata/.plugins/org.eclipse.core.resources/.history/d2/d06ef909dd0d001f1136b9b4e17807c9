@@ -1,0 +1,10 @@
+package com.petshop.dao;
+
+import java.util.List;
+
+import com.petshop.model.DonHangCartModel;
+
+public interface IDonHangCartDAO {
+	List<DonHangCartModel> findAllDonHangCartForId(String idKhachHang);
+	Float tinhTongTien();
+}

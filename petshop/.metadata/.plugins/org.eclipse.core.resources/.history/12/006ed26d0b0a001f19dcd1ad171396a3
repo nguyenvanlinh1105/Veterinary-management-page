@@ -1,0 +1,12 @@
+package com.petshop.service;
+
+import java.util.List;
+
+import com.petshop.model.ChiTietPhieuNhapModel;
+import com.petshop.paging.Pageble;
+
+public interface IChiTietPhieuNhapService {
+	List<ChiTietPhieuNhapModel> findAllChiTietPhieuNhap(Pageble pageble);
+	int getToltalItemChiTietPhieuNhap();
+	ChiTietPhieuNhapModel findOneDonHang(String maPN);
+}

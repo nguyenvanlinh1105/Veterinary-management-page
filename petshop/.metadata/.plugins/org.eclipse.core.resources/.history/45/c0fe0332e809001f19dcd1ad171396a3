@@ -1,0 +1,54 @@
+package com.petshop.mapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.petshop.model.NhaCungCapModel;
+
+
+public class NhaCungCapMapper implements RowMapper<NhaCungCapModel> {
+
+	@Override
+	public NhaCungCapModel mapRow(ResultSet resultSet) {
+		NhaCungCapModel nhaCungCap;
+		try {
+			nhaCungCap = new NhaCungCapModel();
+			nhaCungCap.setIdUser(resultSet.getString("idUser"));
+			nhaCungCap.setUserName(resultSet.getString("userName"));
+			nhaCungCap.setTenuser(resultSet.getString("tenuser"));
+			nhaCungCap.setPassword(resultSet.getString("password"));
+			nhaCungCap.setLoaiuser(resultSet.getString("loaiuser"));
+			nhaCungCap.setGioiTinh(resultSet.getString("gioiTinh"));
+			nhaCungCap.setNgaySinh(resultSet.getDate("ngaySinh"));
+			nhaCungCap.setSoDienThoai(resultSet.getString("soDienThoai"));
+			nhaCungCap.setEmail(resultSet.getString("email"));
+			nhaCungCap.setThongTinUser(resultSet.getString("thongTinUser"));
+			
+			if(resultSet.getTimestamp("modifieddate")!=null) {
+				users.setModifieddate(resultSet.getTimestamp("modifieddate"));
+			}else {
+				users.setCreateddate(resultSet.getTimestamp("createddate"));
+			}
+			if(resultSet.getString("modifiedby")!=null) {
+				users.setModifiedby(resultSet.getString("modifiedby"));
+			}else {
+				users.setCreatedby(resultSet.getString("createdby"));
+			}
+			users.setStatus(resultSet.getInt("status"));
+			try {
+				RoleModel role = new RoleModel();
+				role.setCode(resultSet.getString("code"));
+				role.setName(resultSet.getString("name"));
+				users.setRole(role);
+			}catch(Exception e) {
+				System.out.print(e.getMessage());
+			}
+			
+			return users;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+}

@@ -1,0 +1,187 @@
+package com.petshop.service.impl;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import com.petshop.dao.IUserDAO;
+import com.petshop.model.UserModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.IUserService;
+
+public class UserService implements IUserService {
+
+	@Inject
+	private IUserDAO userDAO;
+	@Override
+	public UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status) {
+		return userDAO.findByUserNameAndPasswordAndStatus( userName,password,status);
+	}
+
+	@Override
+	public int getTotalItemNhanVien() {
+		return userDAO.getToltalItemNhanVien();
+	}
+	
+	@Override
+	public List<UserModel> findAllNhanVien(Pageble pageble) {		
+		return userDAO.findAllNhanVien(pageble);
+	}
+	
+	public int getTotalItemBacSi() {
+		return userDAO.getTotalItemBacSi();
+	}
+
+	@Override
+	public List<UserModel> findAllBacSi(Pageble pageble) {		
+		return userDAO.findAllBacSi(pageble);
+	}
+
+	@Override
+	public List<UserModel> findAllKhachHang(Pageble pageble) {
+		return userDAO.findAllKhachHang(pageble);
+	}
+
+	@Override
+	public int getTotalItemKhachHang() {
+		return userDAO.getTotalItemKhachHang();
+	}
+
+	@Override
+	public List<UserModel> findAllAdmin(Pageble pageble) {
+		return userDAO.findAllAdmin(pageble);
+	}
+
+	@Override
+	public int getTotalItemAdmin() {
+		return userDAO.getTotalItemAdmin();
+	}
+
+	
+	
+	
+	/// USE API 
+	@Override
+	public UserModel saveAdmin(UserModel userModel) {
+		userModel.setCreateddate(new Timestamp(System.currentTimeMillis()));
+		userModel.setStatus(1);
+		Long newId= userDAO.saveAdmin(userModel);
+		return userDAO.findOne(newId);
+	}
+
+	@Override
+	public UserModel updateAdmin(UserModel updateNew) {
+        updateNew.setModifieddate(new Timestamp(System.currentTimeMillis()));
+        userDAO.updateAdmin_KhachHang(updateNew);
+        return userDAO.findOneUser(updateNew.getIdUser());
+	}
+
+	@Override
+	public void deleteUser(String[] ids) {
+		for(String id : ids) {
+			userDAO.deleteUser(id);
+		}
+		
+	}
+
+	@Override
+	public UserModel findOneAdmin(String id) {
+		return userDAO.findOneUser(id);
+	}
+
+	@Override
+	public UserModel saveNhanVien(UserModel newModel) {
+		newModel.setCreateddate(new Timestamp(System.currentTimeMillis()));
+		newModel.setStatus(1);
+		Long newId= userDAO.saveNhanVien(newModel);
+		if(newId!=null) {
+		}
+		return userDAO.findOne(newId);
+	}
+
+	@Override
+	public UserModel updateNhanVien(UserModel updateUser) {
+		updateUser.setModifieddate(new Timestamp(System.currentTimeMillis()));
+	     userDAO.updateNhanVien_BacSi(updateUser);
+	     return userDAO.findOneUser(updateUser.getIdUser());
+	}
+
+	@Override
+	public UserModel findOneNhanVien(String id) {
+		return userDAO.findOneUser(id);
+	}
+
+	@Override
+	public UserModel saveBacSi(UserModel userModel) {
+		userModel.setCreateddate(new Timestamp(System.currentTimeMillis()));
+		userModel.setStatus(1);
+		Long newId= userDAO.saveBacSi(userModel);
+		if(newId!=null) {
+		}
+		return userDAO.findOne(newId);
+	}
+
+	@Override
+	public UserModel updateBacSi(UserModel updateUser) {
+		updateUser.setModifieddate(new Timestamp(System.currentTimeMillis()));
+	     userDAO.updateNhanVien_BacSi(updateUser);
+	     return userDAO.findOneUser(updateUser.getIdUser());
+	}
+
+
+	@Override
+	public UserModel findOneBacSi(String id) {
+		return userDAO.findOneUser(id);
+	}
+
+	@Override
+	public UserModel findOneKhachHang(String idUser) {
+		return userDAO.findOneUser(idUser);
+	}
+
+	@Override
+	public UserModel saveKhachHang(UserModel userModel) {
+		userModel.setCreateddate(new Timestamp(System.currentTimeMillis()));
+		userModel.setStatus(1);
+		Long newId= userDAO.saveKhachHang(userModel);
+		if(newId!=null) {
+		}
+		return userDAO.findOne(newId);
+	}
+
+	@Override
+	public UserModel updateKhachHang(UserModel updateNew) {
+		updateNew.setModifieddate(new Timestamp(System.currentTimeMillis()));
+        userDAO.updateAdmin_KhachHang(updateNew);
+        return userDAO.findOneUser(updateNew.getIdUser());
+	}
+
+	@Override
+	public List<UserModel> findAllKhachHang() {
+		return userDAO.findAllKhachHang();
+	}
+
+	@Override
+	public List<UserModel> findAllBacSi() {
+		return userDAO.findAllBacSi();
+	}
+
+	@Override
+	public List<UserModel> findAllNhanVien() {
+		return userDAO.findAllNhanVien();
+	}
+
+	@Override
+	public Long DangKiTaiKhoan(String tenuser, String userName, String password, String email) {
+		return userDAO.DangKiTaiKhoan( tenuser.toString(),  userName,  password,  email);
+		
+	}
+
+	@Override
+	public UserModel findOneUser(String idUser) {
+		return userDAO.findOneUser(idUser);
+	}
+	
+	
+}

@@ -1,0 +1,51 @@
+package com.petshop.service.impl;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import com.petshop.dao.IChiTietPhieuNhapDAO;
+import com.petshop.model.ChiTietPhieuNhapModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.IChiTietPhieuNhapService;
+
+public class ChiTietPhieuNhapService  implements IChiTietPhieuNhapService{
+
+	@Inject 
+	private IChiTietPhieuNhapDAO chiTietPhieuNhapDAO;
+	@Override
+	public List<ChiTietPhieuNhapModel> findAllChiTietPhieuNhap(Pageble pageble) {
+		return chiTietPhieuNhapDAO.findAllChiTietPhieuNhap(pageble);
+	}
+
+	@Override
+	public int getToltalItemChiTietPhieuNhap() {
+		return chiTietPhieuNhapDAO.getToltalItemChiTietPhieuNhap();
+	}
+
+	@Override
+	public ChiTietPhieuNhapModel findOneChiTietPhieu(String maPN,String idDichVu) {
+		return chiTietPhieuNhapDAO.findOneChiTietPhieuNhap(maPN,idDichVu);
+	}
+
+	@Override
+	public void deleteChiTietPhieuNhap(String[] ids) {
+
+		
+	}
+
+	@Override
+	public ChiTietPhieuNhapModel updateChiTietPhieuNhap(ChiTietPhieuNhapModel updatePN) {
+		updatePN.setCreateddate(new Timestamp(System.currentTimeMillis()));
+		Long newId= chiTietPhieuNhapDAO.saveChiTietPhieuNhap(updatePN);
+		return chiTietPhieuNhapDAO.findOneChiTietPhieuNhapByID(newId);
+	}
+
+	@Override
+	public ChiTietPhieuNhapModel saveChiTietPhieuNhap(ChiTietPhieuNhapModel newModel) {
+
+		return null;
+	}
+
+}

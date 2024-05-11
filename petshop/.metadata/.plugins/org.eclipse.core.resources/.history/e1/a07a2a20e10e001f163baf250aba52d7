@@ -1,0 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+   <%@include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="container p-5 pt-5 mx-auto">
+    <div class="main-body">
+        <div class="row">
+            <div class="col-lg-7 pl-5">
+            <h3 class="text-center">Hãy thêm thật nhiều pet để PETSHOP có thể thay bạn chăm sóc chúng nhé 🥰 !</h3>
+                <div class="card">
+						<form id="formSubmit"class="card-body ">
+							<div class="row mb-3">
+								<div class="col-sm-3 align-self-center">
+									<h6 class="mb-0">Tên thú cưng của bạn:</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" id="userName" name="userName" class="form-control">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3 align-self-center">
+									<h6 class="mb-0">Độ tuổi của thú cưng</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" id="tenuser" name="tenuser"  class="form-control" >
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3 align-self-center">
+									<h6 class="mb-0">Loại mèo:</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="email"  id="email" name="email"  class="form-control" value="${user.email}">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3 align-self-center">
+									<h6 class="mb-0">Giới tính</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" id="gioiTinh" name="gioiTinh" class="form-control" value="${user.gioiTinh}">
+									<span>*Giới tính:Đực, Cái</span>
+								</div>
+							</div>
+							
+							<div class="row pt-5">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-9 text-secondary">
+									<input type="button" id="btnUser" class="btn btn-primary px-4" value="Thêm thú cưng">
+								</div>
+							</div>
+							<input type="hidden" value="${user.idUser}" id="idUser" name="idUser"/>
+						</form>
+					</div>
+					
+				</div>
+				 <div class="col-lg-5">
+				 <div class="d-flex flex-column align-items-center text-center">
+				            <img src="template/web/img/user_add_cat.jpg">
+                    <div class="mt-1">
+                      <p class="text-secondary">MEWWWWWW🥰🥰</p>
+                      <p class="text-muted font-size-sm">Khi bạn cung cấp thông tin về mèo, chúng tôi sẽ tận dụng để tạo ra các gợi ý sản phẩm và dịch vụ độc đáo và phù hợp nhất cho chúng. Từ thức ăn chăm sóc sức khỏe đến đồ chơi giáo dục, từ sản phẩm vệ sinh hàng ngày đến dịch vụ y tế chăm sóc sức khỏe, chúng tôi sẽ đảm bảo rằng mọi sản phẩm và dịch vụ đều được tùy chỉnh sao cho phù hợp với nhu cầu cụ thể của mèo của bạn. Với mỗi thông tin bạn cung cấp, chúng tôi hy vọng sẽ giúp nâng cao chất lượng dịch vụ và mang lại hạnh phúc cho những người bạn bốn chân của chúng ta.</p>
+                      
+                    </div>
+                  </div>
+				 </div>
+   			</div>
+ 			</div>
+   	 </div>
+</body>
+</html>

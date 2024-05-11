@@ -1,0 +1,38 @@
+package com.petshop.service.impl;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import com.petshop.dao.INhaCungCapDAO;
+import com.petshop.model.NhaCungCapModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.INhaCungCapService;
+
+public class NhaCungCapService implements INhaCungCapService {
+
+	@Inject 
+	private INhaCungCapDAO nhaCungCapDAO;
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap(Pageble pageble) {
+		
+		return nhaCungCapDAO.findAllNhaCungCap(pageble) ;
+	}
+
+	@Override
+	public Integer getToltalItemNhaCungCap() {
+		return nhaCungCapDAO.getToltalItemNhaCungCap();
+	}
+
+	@Override
+	public NhaCungCapModel findOneNhaCungCap(String maNCC) {
+		return nhaCungCapDAO.findOneNhaCungCap(maNCC);
+	}
+
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap() {
+		
+		return nhaCungCapDAO.findAllNhaCungCap() ;
+	}
+
+}

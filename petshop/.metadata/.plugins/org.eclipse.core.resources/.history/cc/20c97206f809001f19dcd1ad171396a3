@@ -1,0 +1,23 @@
+package com.petshop.service.impl;
+
+import java.util.List;
+
+import com.petshop.model.NhaCungCapModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.INhaCungCapService;
+
+public class NhaCungCapService implements INhaCungCapService {
+
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap(Pageble pageble) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getToltalItemNhaCungCap() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

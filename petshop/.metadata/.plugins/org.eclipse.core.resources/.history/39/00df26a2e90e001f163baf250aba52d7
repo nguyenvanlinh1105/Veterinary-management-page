@@ -1,0 +1,23 @@
+package com.petshop.dao.impl;
+
+import com.petshop.dao.IInforPetUserDAO;
+import com.petshop.model.InforPetUserModel;
+
+public class InforPetUserDAO extends AbstractDAO<InforPetUserDAO> implements IInforPetUserDAO {
+
+	@Override
+	public void savePetUser(InforPetUserModel newModel) {
+		 String sql = "{CALL ThemThuCungUser(?, ?, ?, ?, ?, ?, ?, ?)}";
+		 insertDichVu(sql, newModel.getIdKhachHang(),
+		    		newModel.getTenThuCung(), newModel.getTuoi(),  newModel.getGioiTinh(),
+		    		newModel.getLoaiThuCung(), newModel.getCreateddate(), newModel.getCreatedby());
+		
+	}
+
+	@Override
+	public InforPetUserModel findOnePetUserId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

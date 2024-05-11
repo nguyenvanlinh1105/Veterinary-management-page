@@ -1,0 +1,7 @@
+package com.petshop.dao.impl;
+
+import com.petshop.dao.IInforPetUserDAO;
+
+public class InforPetUserDAO extends AbstractDAO<InforPetUserDAO> implements IInforPetUserDAO {
+
+}

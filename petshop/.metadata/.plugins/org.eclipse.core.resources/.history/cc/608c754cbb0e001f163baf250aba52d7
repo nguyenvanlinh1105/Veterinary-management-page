@@ -1,0 +1,47 @@
+package com.petshop.controller.web;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.petshop.constant.SystemConstant;
+import com.petshop.model.UserModel;
+import com.petshop.service.IThuCungService;
+import com.petshop.service.IUserService;
+import com.petshop.utils.SessionUtil;
+@WebServlet(urlPatterns= {"/web-user"})
+public class UserController extends HttpServlet{
+	@Inject
+	private IUserService userService;
+	
+	@Inject 
+	private IThuCungService thuCungService;
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		 UserModel model = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
+		 String view="";
+		 if(model!=null) {
+			 if(req.getParameter("type").equals(SystemConstant.LIST)) {
+				view ="/views/user/user.jsp";	
+				System.out.print(thuCungService.findAllThuCungByIdKH(model.getIdUser()));
+				req.setAttribute("thuCung", thuCungService.findAllThuCungByIdKH(model.getIdUser()));
+			 }else if(req.getParameter("type").equals(SystemConstant.EDIT)) {
+				view ="/views/user/editUser.jsp";	
+			 }
+			req.setAttribute("user", userService.findOneUser(model.getIdUser()));
+			RequestDispatcher rd = req.getRequestDispatcher(view);
+			rd.forward(req, resp);
+		 }else {
+			 resp.sendRedirect(req.getContextPath()+"/dang-nhap?action=login");
+		 }
+		
+	}
+	
+	
+}

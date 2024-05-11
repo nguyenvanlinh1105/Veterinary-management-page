@@ -1,0 +1,30 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+
+import com.petshop.dao.IDatDichVuDAO;
+import com.petshop.mapper.DatDichVuMapper;
+import com.petshop.model.DatDichVuModel;
+
+public class DatDichVuDAO extends AbstractDAO<DichVuDAO> implements IDatDichVuDAO{
+
+	@Override
+	public Long saveDonHangDichVu(DatDichVuModel newModel) {
+		 String sql = "{CALL InsertDonHangAndChiTietDonHang(?, ?, ?, ?, ?, ?, ?, ?)}";
+		    return insert(sql, newModel.getIdKhachHang(),
+		    		newModel.getIdDichVu(), newModel.getSoLuong(),  newModel.getSdtGiaoHang(),
+		    		newModel.getDiaChiGiaoHang(), newModel.getPhThucThanhToan(),
+		    		newModel.getCreateddate(), newModel.getCreatedby());
+	}
+
+	@Override
+	public DatDichVuModel findOneDatDichVuByID(Long id) {
+		String sql =  "{CALL GetDonHangAndChiTietDonHang(?)}";;
+		List<DatDichVuModel> DDVList = query(sql, new DatDichVuMapper(),"KH001");
+		    if (!DDVList.isEmpty()) {
+		        return DDVList.get(0);
+		    }
+		    return null; 
+	}
+
+}

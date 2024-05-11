@@ -1,0 +1,42 @@
+package com.petshop.controller.web;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.petshop.constant.SystemConstant;
+import com.petshop.model.UserModel;
+import com.petshop.service.IDichVuService;
+import com.petshop.utils.FormUtil;
+import com.petshop.utils.SessionUtil;
+@WebServlet(urlPatterns= {"/web-addpet"})
+public class PetController extends HttpServlet{
+	@Inject
+	private IDichVuService dichVuService;
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		 UserModel model = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
+		 if(model!=null) {
+			 if(model.getType().equals(SystemConstant.EDIT)) {
+				 String view="";
+					view ="/views/user/pet/pet.jsp";
+				req.setAttribute("dichVu", dichVuService.findAllDichVu());
+				RequestDispatcher rd = req.getRequestDispatcher(view);
+				rd.forward(req, resp);
+			}
+			 
+		 }else {
+			 resp.sendRedirect(req.getContextPath()+"/dang-nhap?action=login");
+		 }
+		
+		
+	}
+	
+	
+}

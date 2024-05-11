@@ -1,0 +1,14 @@
+package com.petshop.service.impl;
+
+import com.petshop.model.InforPetUserModel;
+import com.petshop.service.IInforPetUserService;
+
+public class InforPetUserService implements IInforPetUserService{
+
+	@Override
+	public InforPetUserModel savePetUser(InforPetUserModel newModel) {
+		
+		return null;
+	}
+
+}

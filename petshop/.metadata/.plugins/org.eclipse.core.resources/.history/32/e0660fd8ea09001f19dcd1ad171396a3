@@ -1,0 +1,43 @@
+package com.petshop.model;
+
+public class ChiTietPhieuNhapModel {
+	private String maPN;
+	private String idDichVu;
+	private int SoLuongNhap;
+	private Float giaNhap;
+	public ChiTietPhieuNhapModel(String maPN, String idDichVu, int soLuongNhap, Float giaNhap) {
+		super();
+		this.maPN = maPN;
+		this.idDichVu = idDichVu;
+		SoLuongNhap = soLuongNhap;
+		this.giaNhap = giaNhap;
+	}
+	public ChiTietPhieuNhapModel() {
+		super();
+	}
+	public String getMaPN() {
+		return maPN;
+	}
+	public void setMaPN(String maPN) {
+		this.maPN = maPN;
+	}
+	public String getIdDichVu() {
+		return idDichVu;
+	}
+	public void setIdDichVu(String idDichVu) {
+		this.idDichVu = idDichVu;
+	}
+	public int getSoLuongNhap() {
+		return SoLuongNhap;
+	}
+	public void setSoLuongNhap(int soLuongNhap) {
+		SoLuongNhap = soLuongNhap;
+	}
+	public Float getGiaNhap() {
+		return giaNhap;
+	}
+	public void setGiaNhap(Float giaNhap) {
+		this.giaNhap = giaNhap;
+	}
+	
+}

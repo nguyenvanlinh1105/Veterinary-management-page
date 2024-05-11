@@ -1,0 +1,11 @@
+package com.petshop.dao;
+
+import java.util.List;
+
+import com.petshop.model.PhieuNhapModel;
+import com.petshop.paging.Pageble;
+
+public class IPhieuNhapDAO {
+	List<PhieuNhapModel> findAllPhieuNhap(Pageble pageble);
+	int getToltalItemPhieuNhap();
+}

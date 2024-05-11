@@ -1,0 +1,163 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/common/taglib.jsp"%>
+<c:url var="APIurl" value="/api-admin-donHang"/>
+<c:url var ="NewURL" value="/admin-donHang"/>
+<html>
+<head>
+    <title>Chỉnh sửa Đơn hàng </title>
+</head>
+<body>
+<div class="main-content ml-2 pr-2">
+    <div class="main-content-inner">
+        <div class="breadcrumbs" id="breadcrumbs">
+            <script type="text/javascript">
+                try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+            </script>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Trang dành cho Admin</a>
+                </li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+        <div class="page-content">
+            <div class="row">
+			    <div class="col-sm-12">
+			        <c:if test="${not empty messageResponse}">
+			            <div class="alert alert-${alert}">
+			                ${messageResponse}
+			            </div>
+			        </c:if> 
+			    </div>
+			</div>
+				<form id="formSubmit" class="row pr-5 pl-5">
+					<div class="form-group col-sm-12">
+				        <label class="control-label no-padding-right">Mã phiếu nhập</label>
+				        <select class="form-control" id="maPN" name="maPN">
+                             <c:if test="${empty model.maPN}">
+                                 <option value="">Chọn mã phiếu nhập</option>
+                                 <c:forEach var="item" items="${phieuNhap}">
+                                     <option value="${item.maPN}">${item.maPN}</option>
+                                 </c:forEach>
+                             </c:if>
+                             <c:if test="${not empty model.maPN}">
+                                 <option value="">Chọn mã phiếu nhập</option>
+                                 <c:forEach var="item" items="${phieuNhap}">
+                                     <option value="${item.maPN}" <c:if test="${item.maPN == model.maPN}"> selected="selected"</c:if>>
+                                             ${item.maPN}
+                                     </option>
+                                    
+                                 </c:forEach>
+                                 
+                                 <script>
+									    var selectElement = document.getElementById("maPN");
+									    selectElement.addEventListener("change", function() {
+									        selectElement.value = "${model.maPN}";
+									    });
+								</script>
+                             </c:if>
+                         </select>
+				    </div>
+				    
+				    <div class="form-group col-sm-12">
+				        <label class="control-label no-padding-right">Chọn dịch vụ</label>
+				        <select class="form-control" id="idDichVu" name="idDichVu">
+                             <c:if test="${empty model.maPN}">
+                                 <option value="">Chọn dịch vụ</option>
+                                 <c:forEach var="item" items="${dichVu}">
+                                     <option value="${item.idDichVu}">${item.tenDichVu}</option>
+                                 </c:forEach>
+                             </c:if>
+                             <c:if test="${not empty model.maPN}">
+                                 <option value="">Chọn dịch vụ</option>
+                                 <c:forEach var="item" items="${dichVu}">
+                                     <option value="${item.idDichVu}" <c:if test="${item.idDichVu == model.idDichVu}"> selected="selected"</c:if>>
+                                             ${item.tenDichVu}
+                                     </option>
+                                    
+                                 </c:forEach>
+                                 
+                                 <script>
+									    var selectElement = document.getElementById("idDichVu");
+									    selectElement.addEventListener("change", function() {
+									        selectElement.value = "${model.idDichVu}";
+									    });
+								</script>
+                             </c:if>
+                         </select>
+				    </div>
+				    
+				    <div class="form-group col-sm-6">
+				        <label class="control-label no-padding-right">Sô lượng nhập</label>
+				        <input type="text" class="form-control " id="soLuongNhap" name="soLuongNhap"  placeholder="Nhập số lượng nhập?" value="${model.soLuongNhap}"/>
+				    </div> 
+				     <div class="form-group col-sm-6">
+				        <label class="control-label no-padding-right">Giá nhập</label>
+				        <input type="text" class="form-control " id="giaNhap" name="giaNhap" placeholder="Nhập giá hàng nhập ?" value="${model.giaNhap}"/>
+				    </div>
+
+				    <div class="form-group col-sm-12 pt-5">
+				        <c:if test="${not empty model.maPN}">
+				            <input type="button" class="btn btn-white btn-warning btn-bold" value="Cập nhật chi tiết phiếu nhập " id="btnAddOrUpdateNew"/>
+				        </c:if>
+				        <c:if test="${empty model.maPN}">
+				            <input type="button" class="btn btn-white btn-warning btn-bold" value="Thêm chi tiết phiếu nhập" id="btnAddOrUpdateNew"/>
+				        </c:if>
+				    </div>
+				    <input type="hidden" value="${model.maPN}" id="maDonHang" name="maDonHang"/>
+				</form>
+        </div>
+    </div>
+</div>
+<script>
+$('#btnAddOrUpdateNew').click(function (e) {
+    e.preventDefault();
+    var data = {};
+    var formData = $('#formSubmit').serializeArray();
+    $.each(formData, function (i, v) {
+        data[""+v.name+""] = v.value;
+        console.log(v.name+" "+v.value)
+    });
+    
+    var id = $('#btnAddOrUpdateNew').val();
+    if (id == "Thêm chi tiết phiếu nhập") {
+        addNew(data);
+    } else {
+        updateNew(data);
+    }
+});
+function addNew(data) {
+    $.ajax({
+        url: '${APIurl}',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: function (result) {
+        	window.location.href = "${NewURL}?type=list&page=1&maxPageItem=8&sortName=maDonHang&sortBy=desc&message=insert_success";
+        },
+        error: function (error) {
+        	console.log(error)
+        	window.location.href = "${NewURL}?type=list&page=1&maxPageItem=8&sortName=maDonHang&sortBy=desc&message=error_system";
+        }
+    });
+}
+function updateNew(data) {
+    $.ajax({
+        url: '${APIurl}',
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: function (result) {
+        	window.location.href = "${NewURL}?type=edit&maDonHang="+result.maDonHang+"&message=update_success";
+        },
+        error: function (error) {
+        	window.location.href = "${NewURL}?type=list&page=1&maxPageItem=8&sortName=maDonHang&sortBy=desc&message=error_system";
+        }
+    });
+}
+    
+</script>
+</body>
+</html>

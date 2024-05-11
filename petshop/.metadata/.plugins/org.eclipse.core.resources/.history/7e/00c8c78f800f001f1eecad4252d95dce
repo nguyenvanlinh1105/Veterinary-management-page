@@ -1,0 +1,116 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>	
+<c:url var="APIurl" value="/api-web-khachHangDangKi"/>
+<c:url var ="successURL" value="/trang-chu"/>
+<c:url var ="lostURL" value="/dang-ki?action=signup"/>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+<title>Đăng kí</title>
+</head>
+<body>
+	<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card" style=" height: 500px;
+			    margin-top: auto;
+			    margin-bottom: auto;
+			    width: 400px;
+			    background-color: rgba(0, 0, 0, 0.5) !important;">
+			<div class="card-header">
+				<h3>Đăng Kí</h3>
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>
+			</div>
+			<div class="card-body">
+				<c:if test="${not empty message }">
+					<div class="alert alert-${alert}">
+		 		 		<strong>${message}</strong>
+					</div>
+				</c:if>
+				
+				<form accept-charset="UTF-8" action="<c:url value='/dang-ki'/>" id="formSignUp" method="POST">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+							
+						</div>
+						<input type="text" class="form-control" placeholder="Họ và tên " name="tenuser">	
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Tên tài khoản" name="userName">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+					</div>
+				
+					<div class="input-group form-group">
+					    <div class="input-group-prepend">
+					        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+					    </div>
+					    <input type="email" class="form-control" placeholder="Nhập email của bạn" name="email">
+					</div>
+					
+					<div class="form-group">
+						<input type="submit" id="btnUser" value="Đăng kí" class="btn float-right login_btn">
+					</div>
+					
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Bạn đã có tài khoản ?<a href="<c:url value='/dang-nhap?action=login'/>">Đăng nhập</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Bạn quên mật khẩu?</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script>
+$('#btnUser').click(function (e) {
+    e.preventDefault();
+    var data = {};
+    var formData = $('#formSignUp').serializeArray();
+    $.each(formData, function (i, v) {
+        data[""+v.name+""] = v.value;
+        console.log(v.name+" "+v.value)
+    });
+    var id = $('#btnUser').val();
+    if (id == "Đăng kí") {
+        addNew(data);
+    }
+});
+function addNew(data) {
+    $.ajax({
+        url: '${APIurl}',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: function (result) {
+        	window.location.href = "${successURL}";
+        },
+        error: function (error) {
+        	console.log(error)
+        	window.location.href = "${lostURL}?message=error_system";
+        }
+    });
+}
+
+    
+</script>
+</body>
+</html>

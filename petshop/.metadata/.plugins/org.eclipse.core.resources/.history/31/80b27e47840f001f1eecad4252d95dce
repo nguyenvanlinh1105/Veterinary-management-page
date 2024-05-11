@@ -1,0 +1,87 @@
+package com.petshop.model;
+
+public class DonHangCartModel extends AbstractModel<DonHangCartModel>{
+	private String maDonHang;
+	private String idDichVu;
+	private String tenDichVu;
+	private int soLuong;
+	private Double donGia;
+	private Double thanhTien;
+	private String sdtGiaoHang;
+	private String diaChiGiaoHang;
+	private String trangThai;
+	public DonHangCartModel(String maDonHang, String idDichVu, String tenDichVu, int soLuong, Double donGia,
+			Double thanhTien, String sdtGiaoHang, String diaChiGiaoHang,String trangThai) {
+		super();
+		this.maDonHang = maDonHang;
+		this.idDichVu = idDichVu;
+		this.tenDichVu = tenDichVu;
+		this.soLuong = soLuong;
+		this.donGia = donGia;
+		this.thanhTien = thanhTien;
+		this.sdtGiaoHang = sdtGiaoHang;
+		this.diaChiGiaoHang = diaChiGiaoHang;
+		this.trangThai=trangThai;
+	}
+	public String getTrangThai() {
+		return trangThai;
+	}
+	public void setTrangThai(String trangThai) {
+		this.trangThai = trangThai;
+	}
+	public DonHangCartModel() {
+		super();
+	}
+	public String getMaDonHang() {
+		return maDonHang;
+	}
+	public void setMaDonHang(String maDonHang) {
+		this.maDonHang = maDonHang;
+	}
+	public String getIdDichVu() {
+		return idDichVu;
+	}
+	public void setIdDichVu(String idDichVu) {
+		this.idDichVu = idDichVu;
+	}
+	public String getTenDichVu() {
+		return tenDichVu;
+	}
+	public void setTenDichVu(String tenDichVu) {
+		this.tenDichVu = tenDichVu;
+	}
+	public int getSoLuong() {
+		return soLuong;
+	}
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+	public Double getDonGia() {
+		return donGia;
+	}
+	public void setDonGia(Double donGia) {
+		this.donGia = donGia;
+	}
+	public Double getThanhTien() {
+		return thanhTien;
+	}
+	public void setThanhTien(Double thanhTien) {
+		this.thanhTien = thanhTien;
+	}
+	public String getSdtGiaoHang() {
+		return sdtGiaoHang;
+	}
+	public void setSdtGiaoHang(String sdtGiaoHang) {
+		this.sdtGiaoHang = sdtGiaoHang;
+	}
+	public String getDiaChiGiaoHang() {
+		return diaChiGiaoHang;
+	}
+	public void setDiaChiGiaoHang(String diaChiGiaoHang) {
+		this.diaChiGiaoHang = diaChiGiaoHang;
+	}
+		
+	public Double tongTienDonHang() {
+		return this.thanhTien;
+	}
+}

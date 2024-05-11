@@ -1,0 +1,58 @@
+package com.petshop.service.impl;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import com.petshop.dao.INhaCungCapDAO;
+import com.petshop.model.NhaCungCapModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.INhaCungCapService;
+
+public class NhaCungCapService implements INhaCungCapService {
+
+	@Inject 
+	private INhaCungCapDAO nhaCungCapDAO;
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap(Pageble pageble) {
+		
+		return nhaCungCapDAO.findAllNhaCungCap(pageble) ;
+	}
+
+	@Override
+	public Integer getToltalItemNhaCungCap() {
+		return nhaCungCapDAO.getToltalItemNhaCungCap();
+	}
+
+	@Override
+	public NhaCungCapModel findOneNhaCungCap(String maNCC) {
+		return nhaCungCapDAO.findOneNhaCungCap(maNCC);
+	}
+
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap() {
+		return nhaCungCapDAO.findAllNhaCungCap() ;
+	}
+
+	@Override
+	public NhaCungCapModel updateNhaCungCap(NhaCungCapModel updateModel) {
+		updateModel.setModifieddate(new Timestamp(System.currentTimeMillis()));
+		nhaCungCapDAO.updateNhaCungCap(updateModel);
+		return nhaCungCapDAO.findOneNhaCungCap(updateModel.getMaNCC());
+	}
+
+	@Override
+	public NhaCungCapModel saveNhaCungCap(NhaCungCapModel newModel) {
+		newModel.setCreateddate(new Timestamp(System.currentTimeMillis()));
+		Long newId= nhaCungCapDAO.saveNhaCungCap(newModel);
+		return nhaCungCapDAO.findOneNhaCungCapById(newId);
+	}
+
+	@Override
+	public void deleteNhaCungCap(String[] ids) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

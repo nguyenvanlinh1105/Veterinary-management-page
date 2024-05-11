@@ -1,0 +1,5 @@
+package com.petshop.dao;
+
+public class IPhieuNhapDAO {
+
+}

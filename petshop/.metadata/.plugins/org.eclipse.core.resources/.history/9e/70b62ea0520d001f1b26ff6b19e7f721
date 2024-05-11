@@ -1,0 +1,175 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	 <!-- Services Start -->
+        <div class="container-fluid services py-5">
+            <div class="container py-5">
+                <div class="mx-auto text-center mb-5" style="max-width: 800px;">
+                    <p class="fs-4 text-uppercase text-center text-primary">Our Service</p>
+                    <h1 class="display-3">Chăm Sóc Cùng PETSHOP</h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <div class="services-content text-end">
+                                        <h3>Kiểm tra sức khỏe cơ bản</h3>
+                                        <p>Đội ngũ bác sĩ thú y chuyên nghiệp của chúng tôi sẽ kiểm tra sức khỏe tổng quan của mèo bạn, bao gồm kiểm tra trọng lượng, kiểm tra lông, tai và mắt, và kiểm tra các vấn đề sức khỏe cơ bản khác.</p>
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Make Order</a>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="temlate/web/img/dichvumeo1.jpg" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="temlate/web/img/dichvumeo2.jpg" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="services-content text-start">
+                                        <h3>Tiêm phòng</h3>
+                                        <p>Chúng tôi cung cấp chương trình tiêm phòng đầy đủ và hiệu quả để bảo vệ mèo của bạn khỏi các bệnh nguy hiểm như tức huyết, viêm phổi và các bệnh truyền nhiễm khác.</p>
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Make Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <div class="services-content text-end">
+                                        <h3>Đặt đơn đi dạo</h3>
+                                        <p>Chúng tôi cung cấp dịch vụ đi dạo dành cho mèo để giúp thú cưng của bạn có thêm vận động, giảm căng thẳng và khám phá thế giới xung quanh một cách an toàn.</p>
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Make Order</a>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="temlate/web/img/dichvumeo3.jpg" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="temlate/web/img/DongVat.jpg" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="services-content text-start">
+                                        <h3>Cung cấp các sản phẩm</h3>
+                                        <p>Cát đậu nành , Cát gỗ, Yếm họa tiết cute cho boss, Sữa tắm SOS,Kem đánh răng nhỏ ,Sữa Bio -Milk 100g</p>
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Make Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <div class="services-content text-end">
+                                        <h3>Tắm rửa và làm đẹp</h3>
+                                        <p>Chúng tôi cung cấp dịch vụ tắm rửa và làm đẹp chuyên nghiệp để giữ cho lông mèo của bạn luôn sạch sẽ và trông thật đẹp.</p>
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Make Order</a>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="img/dichvumeo5.webp" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="temlate/web/img/dichvumeo6.jpg" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="services-content text-start">
+                                        <h3>Dịch vụ điều trị y tế</h3>
+                                        <p>Bác sĩ thú y của chúng tôi có kinh nghiệm và tận tình trong việc cung cấp điều trị y tế và chăm sóc đặc biệt cho mèo khi chúng cần.</p>
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Make Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <div class="services-content text-end">
+                                        <h3>Dịch vụ nuôi dưỡng và dinh dưỡng</h3>
+                                        <p>Chúng tôi cung cấp các sản phẩm thức ăn chất lượng cao và chế độ dinh dưỡng phù hợp để đảm bảo mèo của bạn luôn khỏe mạnh và tràn đầy năng lượng.</p>
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Make Order</a>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="temlate/web/img/dichvumeo7.webp" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-start border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="temlate/web/img/dichvumeo8.jpg" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="services-content text-start">
+                                        <h3>Dịch vụ giáo dục và huấn luyện
+                                        </h3>
+                                        <p>Chúng tôi cung cấp các khóa học giáo dục và huấn luyện để giúp mèo của bạn phát triển hành vi tích cực và tăng cường mối quan hệ giữa bạn và thú cưng của mình.
+                                        </p>
+                                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4">Make Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="services-btn text-center">
+                            <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-3 px-5">Service More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Services End -->
+</body>
+</html>

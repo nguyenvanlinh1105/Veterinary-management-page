@@ -1,0 +1,24 @@
+1712554873699	Delete element
+1712681118567	Delete element
+1712681125186	Delete element
+1712681128569	Delete element
+1712681230515	Delete element
+1712681407186	Delete element
+1712682250934	Delete element
+1712684914285	Rename resource 'carousel-1.jpg'
+1712684923685	Rename resource 'carousel-2.jpg'
+1712684932725	Rename resource 'carousel-3.jpg'
+1713022316402	Rename type 'DonHang'
+1713022324460	Rename type 'DichVu'
+1713022333402	Rename type 'ChiTietDonHang'
+1713022341063	Rename type 'The'
+1713022350107	Rename type 'ThuCung'
+1713022359328	Rename type 'ThuCungModle'
+1713026793639	Rename type 'ChiTietDonHangDAO'
+1713026810009	Rename type 'DichVuDAO'
+1713026819841	Rename type 'DonHangDAO'
+1713026830474	Rename type 'Role_userDAO'
+1713026841028	Rename type 'RoleDAO'
+1713026851159	Rename type 'TheDAO'
+1713026865001	Rename type 'ThuCungDAO'
+1713026881661	Rename type 'UserDAO'

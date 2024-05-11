@@ -1,0 +1,5 @@
+package com.petshop.service;
+
+public interface IChiTietPhieuNhapService {
+
+}

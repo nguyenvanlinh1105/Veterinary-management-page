@@ -1,0 +1,15 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+import com.petshop.dao.IDonHangCartDAO;
+import com.petshop.model.DonHangCartModel;
+public class DonHangCartDAO extends AbstractDAO<DonHangCartModel> implements IDonHangCartDAO{
+
+	@Override
+	public List<DonHangCartModel> findAllDonHangCartForId(String idKhachHang) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

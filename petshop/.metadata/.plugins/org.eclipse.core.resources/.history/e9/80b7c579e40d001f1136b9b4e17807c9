@@ -1,0 +1,46 @@
+package com.petshop.controller.web;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.petshop.constant.SystemConstant;
+import com.petshop.model.DonHangCartModel;
+import com.petshop.model.UserModel;
+import com.petshop.service.IDonHangCartService;
+import com.petshop.utils.MessageUtil;
+import com.petshop.utils.SessionUtil;
+@WebServlet(urlPatterns= {"/web-cart"})
+public class CartController extends HttpServlet{
+	@Inject
+	private IDonHangCartService donHangCartService;
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		 UserModel model = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
+		 DonHangCartModel dhmodel = new DonHangCartModel();
+		 if(model!=null) {
+			 String view="";
+				view ="/views/web/cart/cart.jsp";
+			dhmodel.setListResult(donHangCartService.findAllDichVuCartByIdUser(model.getIdUser()));
+			MessageUtil.showMessage(req);
+			req.setAttribute(SystemConstant.MODEL, dhmodel);
+			req.setAttribute("tongTien", donHangCartService.TinhTongTien());
+			SessionUtil.getInstance().putValue(req, "USERMODEL", model);
+			RequestDispatcher rd = req.getRequestDispatcher(view);
+			rd.forward(req, resp);
+			
+		 }else {
+			 resp.sendRedirect(req.getContextPath()+"/dang-nhap?action=login");
+		 }
+		
+		
+	}
+	
+	
+}

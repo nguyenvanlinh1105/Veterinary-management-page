@@ -1,0 +1,61 @@
+package com.petshop.model;
+
+public class DatDichVuModel extends AbstractModel<DatDichVuModel> {
+	private String idDichVu;
+	private  String sdtGiaoHang;
+	private String diaChiGiaoHang;
+	private int SoLuong;
+	private String idKhachHang;
+	private String phThucThanhToan;
+	public DatDichVuModel(String idDichVu, String sdtGiaoHang, String diaChiGiaoHang, int soLuong,String idKhachHang,String phThucThanhToan) {
+		super();
+		this.idDichVu = idDichVu;
+		this.sdtGiaoHang = sdtGiaoHang;
+		this.diaChiGiaoHang = diaChiGiaoHang;
+		SoLuong = soLuong;
+		this.idKhachHang= idKhachHang;
+		this.phThucThanhToan=phThucThanhToan;
+	}
+	public String getPhThucThanhToan() {
+		return phThucThanhToan;
+	}
+	public void setPhThucThanhToan(String phThucThanhToan) {
+		this.phThucThanhToan = phThucThanhToan;
+	}
+	public String getIdKhachHang() {
+		return idKhachHang;
+	}
+	public void setIdKhachHang(String idKhachHang) {
+		this.idKhachHang = idKhachHang;
+	}
+	public DatDichVuModel() {
+		super();
+	}
+	public String getIdDichVu() {
+		return idDichVu;
+	}
+	public void setIdDichVu(String idDichVu) {
+		this.idDichVu = idDichVu;
+	}
+	public String getSdtGiaoHang() {
+		return sdtGiaoHang;
+	}
+	public void setSdtGiaoHang(String sdtGiaoHang) {
+		this.sdtGiaoHang = sdtGiaoHang;
+	}
+	public String getDiaChiGiaoHang() {
+		return diaChiGiaoHang;
+	}
+	public void setDiaChiGiaoHang(String diaChiGiaoHang) {
+		this.diaChiGiaoHang = diaChiGiaoHang;
+	}
+	public int getSoLuong() {
+		return SoLuong;
+	}
+	public void setSoLuong(int soLuong) {
+		SoLuong = soLuong;
+	}
+	
+	
+	
+}

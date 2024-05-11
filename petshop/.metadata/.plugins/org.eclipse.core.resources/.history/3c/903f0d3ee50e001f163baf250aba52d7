@@ -1,0 +1,52 @@
+package com.petshop.controller.admin.api;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.petshop.model.TheModel;
+import com.petshop.model.UserModel;
+import com.petshop.service.ITheService;
+import com.petshop.utils.HttpUtil;
+import com.petshop.utils.SessionUtil;
+@WebServlet(urlPatterns= {"/api-web-pet"})
+public class PetUserAPI extends HttpServlet{
+	@Inject 
+	private ITheService TheService;
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+		throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		TheModel newModel = HttpUtil.of(req.getReader()).toModel(TheModel.class);
+		newModel.setCreatedby(((UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL")).getTenuser());
+		newModel = TheService.saveThe(newModel);
+		mapper.writeValue(resp.getOutputStream(), newModel);
+	}
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		TheModel updateThe = HttpUtil.of(req.getReader()).toModel(TheModel.class);
+		updateThe.setModifiedby(((UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL")).getTenuser());
+		updateThe = TheService.updateThe(updateThe);
+		mapper.writeValue(resp.getOutputStream(), updateThe);
+	}
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		UserModel newModel = HttpUtil.of(req.getReader()).toModel(UserModel.class);
+		TheService.deleteThe(newModel.getIds());
+		mapper.writeValue(resp.getOutputStream(), "{}");
+	}
+}

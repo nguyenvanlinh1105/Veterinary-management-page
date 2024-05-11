@@ -1,0 +1,103 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="<c:url value='/template/web/css/style.css' />" rel="stylesheet" type="text/css" media="all"/>
+<title></title>
+</head>
+<body>
+<div class="container-fluid bg-breadcrumb py-5">
+    <div class="container text-center py-5">
+	        <h3 class="text-white display-3 mb-4">Liện Hệ Chúng Tôi</h1>
+	        <ol class="breadcrumb justify-content-center mb-0">
+	            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+	            <li class="breadcrumb-item"><a href="#">Pages</a></li>
+	            <li class="breadcrumb-item active text-white">Về chúng tôi</li>
+	        </ol>    
+    </div>
+</div>
+        <!-- Header End -->
+
+        
+        <!-- Appointment Start -->
+        <form class="container-fluid appointment py-5" method="post">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="appointment-form p-5 text-black" style="background: linear-gradient(rgba(255, 192, 203, 0.4), rgba(255, 192, 203, 0.4))">
+                            <p class="fs-4 text-uppercase text-primary">Liên hệ</p>
+                            <h1 class="display-4 mb-4 text-white">Lập lịch hẹn</h1>
+                            <form>
+                                <div class="row gy-3 gx-4">
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control py-3 border-white bg-transparent text-white" placeholder="Họ và Tên                                        ">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="email" class="form-control py-3 border-white bg-transparent text-white" placeholder="Email">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <select class="form-select py-3 border-white bg-transparent" aria-label="Default select example">
+                                            <option selected>Chọn dịch vụ</option>
+                                           <c:forEach var="item" items="${dichVu}">
+		                                     <option value="${item.idDichVu}">${item.tenDichVu}</option>
+		                                 </c:forEach>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <input type="date" class="form-control py-3 border-white bg-transparent">
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control border-white bg-transparent text-white" name="text" id="area-text" cols="30" rows="5" placeholder="Ghi chú"></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button type="button" class="btn btn-primary btn-primary-outline-0 w-100 py-3 px-5">Gửi</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="appointment-time p-5">
+                            <h1 class="display-5 mb-4">Giờ mở cửa </h1>
+                            <div class="d-flex justify-content-between fs-5 text-white">
+                                <p>Thứ 2:</p>
+                                <p>09:00 am – 10:00 pm</p>
+                            </div>
+                            <div class="d-flex justify-content-between fs-5 text-white">
+                                <p>Thứ 3:</p>
+                                <p>09:00 am – 10:00 pm</p>
+                            </div>
+                            <div class="d-flex justify-content-between fs-5 text-white">
+                                <p>Thứ 4:</p>
+                                <p>09:00 am – 10:00 pm</p>
+                            </div>
+                            <div class="d-flex justify-content-between fs-5 text-white">
+                                <p>Thứ 5:</p>
+                                <p>09:00 am – 10:00 pm</p>
+                            </div>
+                            <div class="d-flex justify-content-between fs-5 text-white">
+                                <p>Thứ 6:</p>
+                                <p>09:00 am – 08:00 pm</p>
+                            </div>
+                            <div class="d-flex justify-content-between fs-5 text-white mb-4">
+                                <p>Thứ 7:</p>
+                                <p>09:00 am – 05:00 pm</p>
+                            </div>
+                            <div class="d-flex justify-content-between fs-5 text-white mb-4">
+                                <p>Chủ nhật:</p>
+                                <p>CLOSED</p>
+                            </div>
+                            <p class="text-dark">Kiểm tra các ưu đãi mùa cho những ưu đãi tốt nhất.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- Appointment End -->
+		
+</body>
+</html>

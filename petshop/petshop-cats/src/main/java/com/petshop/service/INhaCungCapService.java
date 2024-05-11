@@ -1,0 +1,16 @@
+package com.petshop.service;
+
+import java.util.List;
+
+import com.petshop.model.NhaCungCapModel;
+import com.petshop.paging.Pageble;
+
+public interface INhaCungCapService {
+	List<NhaCungCapModel> findAllNhaCungCap(Pageble pageble);
+	Integer getToltalItemNhaCungCap();
+	NhaCungCapModel findOneNhaCungCap(String maNCC);
+	List<NhaCungCapModel> findAllNhaCungCap();
+	NhaCungCapModel updateNhaCungCap(NhaCungCapModel updateModel);
+	NhaCungCapModel saveNhaCungCap(NhaCungCapModel newModel);
+	void deleteNhaCungCap(String[] ids);
+}

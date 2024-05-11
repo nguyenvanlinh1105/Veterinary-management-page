@@ -1,0 +1,95 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+
+import com.petshop.dao.INhaCungCapDAO;
+import com.petshop.mapper.NhaCungCapMapper;
+import com.petshop.mapper.ThuCungMapper;
+import com.petshop.model.NhaCungCapModel;
+import com.petshop.model.ThuCungModel;
+import com.petshop.paging.Pageble;
+
+public class NhaCungCapDAO extends AbstractDAO<NhaCungCapModel>implements INhaCungCapDAO{
+
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap(Pageble pageble) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM NhaCungCap");
+		if(pageble.getSorter() !=null) {
+			sql.append(" ORDER BY ")
+			.append(pageble.getSorter().getSortName())
+			.append(" ")
+			.append(pageble.getSorter().getSortBy());
+		}
+		 if (pageble.getOffset() != null && pageble.getLimit() != null) {
+		        sql.append(" OFFSET ")
+		           .append(pageble.getOffset())
+		           .append(" ROWS FETCH NEXT ")
+		           .append(pageble.getLimit())
+		           .append(" ROWS ONLY");
+		    }
+
+		return query(sql.toString(), new NhaCungCapMapper());
+	}
+
+	@Override
+	public int getToltalItemNhaCungCap() {
+		String sql = "Select count(*) from dbo.NhaCungCap";
+		return count(sql);
+	}
+
+	@Override
+	public NhaCungCapModel findOneNhaCungCap(String maNCC) {
+		String sql = "select * from NhaCungCap WHERE maNCC = ?";
+		List<NhaCungCapModel> nccList = query(sql, new NhaCungCapMapper(), maNCC);
+		    if (!nccList.isEmpty()) {
+		        return nccList.get(0);
+		    }
+		    return null; 
+	}
+
+	@Override
+	public List<NhaCungCapModel> findAllNhaCungCap() {
+		String sql ="Select * from NhaCungCap";
+		return query(sql, new NhaCungCapMapper());
+	}
+
+	@Override
+	public Long saveNhaCungCap(NhaCungCapModel newModel) {
+		 String sql = "{CALL InsertNhaCungCap(?, ?, ?, ?, ?, ?)}";
+		    return insert(sql, newModel.getTenNCC(),
+		            newModel.getDiaChiNCC(), newModel.getSDT(),
+		            newModel.getNhanVienLienHe(),  newModel.getCreateddate(), newModel.getCreatedby());
+	}
+
+	@Override
+	public NhaCungCapModel findOneNhaCungCapById(Long newId) {
+		String sql = "select * from  NhaCungCap  where maNCC ='NCC08'";
+		List<NhaCungCapModel> NNCList = query(sql, new NhaCungCapMapper());
+		    if (!NNCList.isEmpty()) {
+		        return NNCList.get(0);
+		    }
+		    return null; 
+	}
+
+	@Override
+	public void updateNhaCungCap(NhaCungCapModel updateModel) {
+		 String sql = "{CALL UpdateNhaCungCap (?, ?, ?, ?, ?, ?, ?)}";
+		    update(sql, 
+		    		updateModel.getMaNCC(),
+		    		updateModel.getTenNCC(), 
+		    		updateModel.getDiaChiNCC(), 
+		    		updateModel.getSDT(), 
+		    		updateModel.getNhanVienLienHe(), 
+		    		updateModel.getModifieddate(), 
+		    		updateModel.getModifiedby());
+	}
+
+	@Override
+	public void deleteNhaCungCap(String id) {
+		
+		
+	}
+
+
+
+}

@@ -1,0 +1,9 @@
+package com.petshop.dao;
+
+import com.petshop.model.DatDichVuModel;
+
+public interface IDatDichVuDAO {
+
+	Long saveDonHangDichVu(DatDichVuModel newModel);
+
+}

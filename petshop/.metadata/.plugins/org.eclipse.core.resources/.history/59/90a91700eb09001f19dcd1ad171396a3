@@ -1,0 +1,33 @@
+package com.petshop.mapper;
+
+import java.sql.ResultSet;
+
+import com.petshop.model.ChiTietPhieuNhapModel;
+
+public class ChiTietPhieuNhapMapper implements RowMapper<ChiTietPhieuNhapModel> {
+
+	@Override
+	public ChiTietPhieuNhapModel mapRow(ResultSet resultSet) {
+		ChiTietPhieuNhapMapper chiTietPhieuNhap;
+		try {
+			chiTietPhieuNhap = new ChiTietPhieuNhapMapper();
+			chiTietPhieuNhap.setIdThuCung(resultSet.getString("idThuCung"));
+			chiTietPhieuNhap.setTenThuCung(resultSet.getString("tenThuCung"));
+			chiTietPhieuNhap.setGioiTinh(resultSet.getString("gioiTinh"));
+			chiTietPhieuNhap.setLoaiThuCung(resultSet.getString("loaiThuCung"));
+			thuCung.setTuoi(resultSet.getInt("tuoi"));
+
+			chiTietPhieuNhap.setModifieddate(resultSet.getTimestamp("modifieddate"));{
+			chiTietPhieuNhap.setCreateddate(resultSet.getTimestamp("createddate"));
+			chiTietPhieuNhap.setModifiedby(resultSet.getString("modifiedby"));
+			chiTietPhieuNhap.setCreatedby(resultSet.getString("createdby"));
+			}
+			
+			return thuCung;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+}

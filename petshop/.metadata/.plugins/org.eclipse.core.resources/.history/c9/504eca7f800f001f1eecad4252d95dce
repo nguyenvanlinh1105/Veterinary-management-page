@@ -1,0 +1,26 @@
+package com.petshop.controller.web.api;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.petshop.model.UserModel;
+import com.petshop.utils.HttpUtil;
+import com.petshop.utils.SessionUtil;
+import com.petshop.service.IUserService;
+@WebServlet(urlPatterns= {"/api-web-khachHangDangKi"})
+public class KhachHangAPI extends HttpServlet{
+	
+	@Inject
+	private IUserService UserService;
+	
+	
+		
+		
+}

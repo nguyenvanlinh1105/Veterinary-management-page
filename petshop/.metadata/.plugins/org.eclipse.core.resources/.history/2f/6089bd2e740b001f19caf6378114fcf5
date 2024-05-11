@@ -1,0 +1,55 @@
+package com.petshop.controller.admin.api;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.petshop.model.PhieuNhapModel;
+import com.petshop.model.UserModel;
+import com.petshop.service.IPhieuNhapService;
+import com.petshop.utils.HttpUtil;
+import com.petshop.utils.SessionUtil;
+@WebServlet(urlPatterns= {"/api-admin-phieuNhap"})
+public class PhieuNhapAPI extends HttpServlet{
+	
+	@Inject
+	private IPhieuNhapService phieuNhapService;
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+			ObjectMapper mapper = new ObjectMapper();
+			req.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
+			PhieuNhapModel newModel = HttpUtil.of(req.getReader()).toModel(PhieuNhapModel.class);
+			newModel.setCreatedby(((UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL")).getTenuser());
+			newModel = phieuNhapService.savePhieuNhap(newModel);
+			mapper.writeValue(resp.getOutputStream(), newModel);
+		}
+		@Override
+		protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			ObjectMapper mapper = new ObjectMapper();
+			req.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
+			PhieuNhapModel updateModel = HttpUtil.of(req.getReader()).toModel(PhieuNhapModel.class);
+			updateModel.setModifiedby(((UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL")).getTenuser());
+			updateModel = phieuNhapService.updatePhieuNhap(updateModel);
+			mapper.writeValue(resp.getOutputStream(), updateModel);
+		}
+		@Override
+		protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			ObjectMapper mapper = new ObjectMapper();
+			req.setCharacterEncoding("UTF-8");
+			resp.setContentType("application/json");
+			PhieuNhapModel newModel = HttpUtil.of(req.getReader()).toModel(PhieuNhapModel.class);
+			
+			phieuNhapService.deleteThuCung(newModel.getIds());
+			mapper.writeValue(resp.getOutputStream(), "{}");
+		}
+	
+}

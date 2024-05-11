@@ -1,0 +1,17 @@
+package com.petshop.dao.impl;
+
+import com.petshop.dao.IDatDichVuDAO;
+import com.petshop.model.DatDichVuModel;
+
+public class DatDichVuDAO extends AbstractDAO<DichVuDAO> implements IDatDichVuDAO{
+
+	@Override
+	public Long saveDonHangDichVu(DatDichVuModel newModel) {
+		 String sql = "{CALL InsertChiTietDonHang(?, ?, ?, ?, ?, ?, ?)}";
+		    return insert(sql, newModel.getIdKhachHang(),
+		    		newModel.getIdDichVu(), newModel.getSdtGiaoHang(),
+		    		newModel.getDiaChiGiaoHang(), newModel.getSoLuong(), 
+		    		newModel.getCreateddate(), newModel.getCreatedby());
+	}
+
+}

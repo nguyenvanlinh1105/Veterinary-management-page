@@ -1,0 +1,83 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PETSHOP</title>
+</head>
+<body>
+	 <!-- About Start -->
+        <div class="container-fluid about py-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-5">
+                        <div class="video">
+                            <img src="template/web/img/anhmeo2_aboutus.jpg" class="img-fluid rounded" alt="">
+                            <div class="position-absolute rounded border-5 border-top border-start border-white" style="bottom: 0; right: 0;;">
+                                <img src="template/web/img/anhmeo1_aboutus.jpg" class="img-fluid rounded" alt="">
+                            </div>
+                            <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div>
+                            <p class="fs-4 text-uppercase text-primary">Về Chúng Tôi</p>
+                            <h1 class="display-4 mb-4">Trung Tâm Chăm Sóc Và Phụ Kiện Thú Cưng Tốt Nhất Cho Bạn
+                            </h1>
+                            <p class="mb-4">Chúng tôi là nơi nâng cao chất lượng cuộc sống của các thành viên bốn chân trong gia đình của bạn. Tại Trung Tâm Chăm Sóc Thú Cưng Tốt Nhất, chúng tôi cam kết cung cấp cho thú cưng của bạn sự quan tâm, chăm sóc và yêu thương tối đa
+                            </p>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fab fa-gitkraken fa-3x text-primary"></i>
+                                        <div class="ms-4">
+                                            <h5 class="mb-2">Chăm sóc sức khỏe</h5>
+                                            <p class="mb-0">Đội ngũ bác sĩ thú y chuyên nghiệp của chúng tôi sẽ đảm bảo rằng thú cưng của bạn luôn ở trạng thái sức khỏe tốt nhất. Từ kiểm tra định kỳ đến điều trị y tế, chúng tôi có mọi thứ để giữ cho thú cưng của bạn mạnh mẽ và hạnh phúc.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-gift fa-3x text-primary"></i>
+                                        <div class="ms-4">
+                                            <h5 class="mb-2">Dịch vụ chăm sóc</h5>
+                                            <p class="mb-0">Tại Trung Tâm Chăm Sóc Thú Cưng Tốt Nhất, chúng tôi cung cấp các dịch vụ chăm sóc chuyên sâu như tắm gội, cắt tỉa lông, và chăm sóc da dành riêng cho thú cưng của bạn. Chúng tôi cam kết mang lại cho thú cưng của bạn sự thoải mái và sảng khoái.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="my-4">Chúng tôi cung cấp các lớp đào tạo từ cơ bản đến nâng cao cho thú cưng của bạn, giúp chúng phát triển kỹ năng và tinh thần. Ngoài ra, chúng tôi cũng tổ chức các hoạt động thú vị như đi dạo, thi đấu và sinh nhật để tạo ra những kỷ niệm đáng nhớ cho bạn và thú cưng của mình.
+                            </p>
+                            <p class="mb-4">Hãy đến với chúng tôi và trải nghiệm sự chăm sóc tận tình và chuyên nghiệp từ đội ngũ của chúng tôi. Thú cưng của bạn xứng đáng nhận được những điều tốt nhất, và chúng tôi ở đây để mang lại điều đó cho họ.
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-primary-outline-0 rounded-pill py-3 px-5">Explore More</a>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <!-- Modal Video -->
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="ratio ratio-16x9">
+                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                                allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+</body>
+</html>

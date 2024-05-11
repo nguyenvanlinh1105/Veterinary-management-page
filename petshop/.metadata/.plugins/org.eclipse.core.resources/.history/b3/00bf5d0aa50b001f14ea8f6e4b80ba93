@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/petshop/controller/admin/api/AdminAPI.java=UTF-8
+encoding//src/main/java/com/petshop/controller/web/HomeController.java=UTF-8
+encoding//src/main/java/com/petshop/dao/impl/AbstractDAO.java=UTF-8
+encoding//src/main/java/com/petshop/dao/impl/UserDAO.java=UTF-8
+encoding//src/main/java/com/petshop/service/impl/ChiTietDonHangService.java=UTF-8
+encoding//src/main/java/com/petshop/service/impl/UserService.java=UTF-8
+encoding//src/main/java/com/petshop/utils/MessageUtil.java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/webapp/common/web/footer.jsp=UTF-8
+encoding//src/main/webapp/common/web/header.jsp=UTF-8
+encoding//src/test/java=UTF-8
+encoding//src/test/resources=UTF-8

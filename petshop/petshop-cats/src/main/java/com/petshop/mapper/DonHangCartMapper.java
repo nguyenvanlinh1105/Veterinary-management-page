@@ -1,0 +1,36 @@
+package com.petshop.mapper;
+
+import java.sql.ResultSet;
+
+import com.petshop.model.ChiTietDonHangModel;
+import com.petshop.model.DonHangCartModel;
+
+public class DonHangCartMapper implements RowMapper<DonHangCartModel>{
+
+	@Override
+	public DonHangCartModel mapRow(ResultSet resultSet) {
+		DonHangCartModel dhCartModel ;
+		try {
+			dhCartModel = new DonHangCartModel();
+			dhCartModel.setMaDonHang(resultSet.getString("maDonHang"));
+			dhCartModel.setIdDichVu(resultSet.getString("idDichVu"));
+			dhCartModel.setTenDichVu(resultSet.getString("tenDichVu"));
+			dhCartModel.setSoLuong(resultSet.getInt("soLuong"));
+			dhCartModel.setDonGia(resultSet.getDouble("donGia"));
+			dhCartModel.setThanhTien(resultSet.getDouble("ThanhTien"));
+			dhCartModel.setSdtGiaoHang(resultSet.getString("sdtGiaoHang"));
+			dhCartModel.setDiaChiGiaoHang(resultSet.getString("diaChiGiaoHang"));
+			dhCartModel.setTrangThai(resultSet.getString("trangThai"));
+			
+			dhCartModel.setCreateddate(resultSet.getTimestamp("createddate"));
+			
+			
+			return dhCartModel;
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return null;
+	}
+
+}

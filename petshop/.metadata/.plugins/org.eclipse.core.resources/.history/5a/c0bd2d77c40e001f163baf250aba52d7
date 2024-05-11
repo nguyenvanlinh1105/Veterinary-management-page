@@ -1,0 +1,276 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.petshop.dao.IUserDAO;
+import com.petshop.mapper.UserMapper;
+import com.petshop.model.UserModel;
+import com.petshop.paging.Pageble;
+
+public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO{
+
+	@Override
+	public List<UserModel> findAllKhachHang(Pageble pageble) {
+	    StringBuilder sql = new StringBuilder("SELECT * FROM Users");
+	    sql.append(" WHERE idUser LIKE 'KH%' and status ='1'");
+
+	    if (pageble.getSorter() != null) {
+	        sql.append(" ORDER BY ")
+	           .append(pageble.getSorter().getSortName())
+	           .append(" ")
+	           .append(pageble.getSorter().getSortBy());
+	    }
+
+	    if (pageble.getOffset() != null && pageble.getLimit() != null) {
+	        sql.append(" OFFSET ")
+	           .append(pageble.getOffset())
+	           .append(" ROWS FETCH NEXT ")
+	           .append(pageble.getLimit())
+	           .append(" ROWS ONLY");
+	    }
+
+	    return query(sql.toString(), new UserMapper());
+	}
+
+	@Override
+	public int getTotalItemKhachHang() {
+		String sql ="select count(*) from Users where idUser LIKE 'KH%' and status ='1' "; 
+		return count(sql);
+	}
+	
+
+	@Override
+	public List<UserModel> findAllNhanVien(Pageble pageble) {
+	    StringBuilder sql = new StringBuilder("SELECT * FROM Users");
+	    sql.append(" WHERE idUser LIKE 'NV%' and status='1' ");
+
+	    if (pageble.getSorter() != null) {
+	        sql.append(" ORDER BY ")
+	           .append(pageble.getSorter().getSortName())
+	           .append(" ")
+	           .append(pageble.getSorter().getSortBy());
+	    }
+
+	    if (pageble.getOffset() != null && pageble.getLimit() != null) {
+	        sql.append(" OFFSET ")
+	           .append(pageble.getOffset())
+	           .append(" ROWS FETCH NEXT ")
+	           .append(pageble.getLimit())
+	           .append(" ROWS ONLY");
+	    }
+
+	    return query(sql.toString(), new UserMapper());
+	}
+
+
+	
+	@Override
+	public int getToltalItemNhanVien() {
+		String sql ="select count(*) from Users where idUser LIKE 'NV%' and status='1' "; 
+		return count(sql);
+	}
+
+
+	public List<UserModel> findAllBacSi(Pageble pageble) {
+	    StringBuilder sql = new StringBuilder("SELECT * FROM Users");
+
+	    sql.append(" WHERE idUser LIKE 'BS%'  and status='1'");
+
+	    if (pageble.getSorter() != null) {
+	        sql.append(" ORDER BY ")
+	           .append(pageble.getSorter().getSortName())
+	           .append(" ")
+	           .append(pageble.getSorter().getSortBy());
+	    }
+
+	    if (pageble.getOffset() != null && pageble.getLimit() != null) {
+	        sql.append(" OFFSET ")
+	           .append(pageble.getOffset())
+	           .append(" ROWS FETCH NEXT ")
+	           .append(pageble.getLimit())
+	           .append(" ROWS ONLY");
+	    }
+
+	    return query(sql.toString(), new UserMapper());
+	}
+
+	@Override
+	public int getTotalItemBacSi() {
+		String sql ="select count(*) from Users where idUser LIKE 'BS%' and status='1' "; 
+		return count(sql);
+	}
+
+	@Override
+	public List<UserModel> findAllAdmin(Pageble pageble) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM Users");
+
+	    sql.append(" WHERE idUser LIKE 'AD%' and status='1'");
+
+	    if (pageble.getSorter() != null && StringUtils.isNotBlank(pageble.getSorter().getSortName()) &&StringUtils.isNotBlank(pageble.getSorter().getSortBy())) {
+	        sql.append(" ORDER BY ")
+	           .append(pageble.getSorter().getSortName())
+	           .append(" ")
+	           .append(pageble.getSorter().getSortBy());
+	    }else if(StringUtils.isBlank(pageble.getSorter().getSortName()) &&StringUtils.isBlank(pageble.getSorter().getSortBy())) {
+	    	sql.append("ORDER BY (SELECT NULL) ");
+	    }
+	    
+
+	    if (pageble.getOffset() != null && pageble.getLimit() != null) {
+	        sql.append(" OFFSET ")
+	           .append(pageble.getOffset())
+	           .append(" ROWS FETCH NEXT ")
+	           .append(pageble.getLimit())
+	           .append(" ROWS ONLY");
+	    }
+
+	    return query(sql.toString(), new UserMapper());
+	}
+
+	@Override
+	public int getTotalItemAdmin() {
+		String sql ="select count(*) from Users where idUser LIKE 'AD%' and status='1' "; 
+		return count(sql);
+	}
+
+	@Override
+	public UserModel findByUserNameAndPasswordAndStatus(String userName, String password, Integer status) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT * FROM dbo.Users AS u");
+		sql.append(" INNER JOIN dbo.role_User AS ru ON u.idUser = ru.idUser");
+		sql.append(" INNER JOIN dbo.role AS r ON ru.roleId = r.roleId");
+		sql.append(" WHERE userName = ? AND password = ? AND status = ?");
+		List<UserModel> users = query(sql.toString(), new UserMapper(), userName , password, status);
+		    if (!users.isEmpty()) {
+		        return users.get(0);
+		    }
+		    return null; 
+	}
+	
+	
+	public UserModel findOneUser(String id) {
+		String sql = "select * from Users WHERE idUser = ?";
+		List<UserModel> userList = query(sql, new UserMapper(), id);
+		    if (!userList.isEmpty()) {
+		        return userList.get(0);
+		    }
+		    return null; 
+		}
+	@Override
+	public Long saveAdmin(UserModel newModel) {
+	    String sql = "{CALL InsertAdmin(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+	    return insert(sql, newModel.getUserName(),
+	            newModel.getPassword(), newModel.getTenuser(),
+	            newModel.getLoaiuser(), newModel.getGioiTinh(), 
+	            newModel.getNgaySinh(), newModel.getSoDienThoai(), newModel.getEmail(),
+	            newModel.getCreateddate(), newModel.getCreatedby(), newModel.getStatus());
+	}
+	
+
+	@Override
+	public void updateAdmin_KhachHang(UserModel updateAD) {
+		StringBuilder sql = new StringBuilder("UPDATE Users SET userName = ?, password = ?,");
+		sql.append(" tenuser = ?, loaiuser = ?, gioiTinh = ?,");
+		sql.append(" ngaySinh=?, soDienThoai=?, email=?, ");
+		sql.append(" modifieddate = ?, modifiedby = ? WHERE idUser = ?");
+		update(sql.toString(), updateAD.getUserName(), updateAD.getPassword(), updateAD.getTenuser(),
+		updateAD.getLoaiuser(), updateAD.getGioiTinh(),updateAD.getNgaySinh(),updateAD.getSoDienThoai()
+		, updateAD.getEmail(),updateAD.getModifieddate(),updateAD.getModifiedby(), updateAD.getIdUser());
+	}
+		
+	
+
+	@Override
+	public void deleteUser(String id) {
+		String sql = "Update Users set status ='0'where idUser=?";
+		update(sql, id );
+		
+	}
+
+	@Override
+	public UserModel findOne(Long idUser) {
+		String sql = "select * from Users WHERE idUser='AD001' ";
+		List<UserModel> userList = query(sql, new UserMapper());
+		    if (!userList.isEmpty()) {
+		        return userList.get(0);
+		    }
+		    return null; 
+	}
+
+	@Override
+	public Long saveNhanVien(UserModel newModel) {
+		 String sql = "{CALL InsertNhanVien(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+		    return insert(sql, newModel.getUserName(),
+		            newModel.getPassword(), newModel.getTenuser(),
+		            newModel.getLoaiuser(), newModel.getGioiTinh(), 
+		            newModel.getNgaySinh(), newModel.getSoDienThoai(), newModel.getEmail(), newModel.getThongTinUser(),
+		            newModel.getCreateddate(), newModel.getCreatedby(), newModel.getStatus());
+	}
+
+
+	@Override
+	public Long saveBacSi(UserModel newModel) {
+		String sql = "{CALL InsertBacSi(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+	    return insert(sql, newModel.getUserName(),
+	            newModel.getPassword(), newModel.getTenuser(),
+	            newModel.getLoaiuser(), newModel.getGioiTinh(), 
+	            newModel.getNgaySinh(), newModel.getSoDienThoai(), newModel.getEmail(), newModel.getThongTinUser(),
+	            newModel.getCreateddate(), newModel.getCreatedby(), newModel.getStatus());
+	}
+
+	@Override
+	public void updateNhanVien_BacSi(UserModel updateBS) {
+		StringBuilder sql = new StringBuilder("UPDATE Users SET userName = ?, password = ?,");
+		sql.append(" tenuser = ?, loaiuser = ?, gioiTinh = ?,");
+		sql.append(" ngaySinh=?, soDienThoai=?, email=?,thongTinUser=?, ");
+		sql.append(" modifieddate = ?, modifiedby = ? WHERE idUser = ?");
+		update(sql.toString(), updateBS.getUserName(), updateBS.getPassword(), updateBS.getTenuser(),
+				updateBS.getLoaiuser(), updateBS.getGioiTinh(),updateBS.getNgaySinh(),updateBS.getSoDienThoai()
+		, updateBS.getEmail(),updateBS.getThongTinUser(),updateBS.getModifieddate(),updateBS.getModifiedby(), updateBS.getIdUser());
+		
+	}
+
+	@Override
+	public Long saveKhachHang(UserModel newModel) {
+		 String sql = "{CALL InsertKhachHang(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+		    return insert(sql, newModel.getUserName(),
+		            newModel.getPassword(), newModel.getTenuser(),
+		            newModel.getLoaiuser(), newModel.getGioiTinh(), 
+		            newModel.getNgaySinh(), newModel.getSoDienThoai(), newModel.getEmail(),
+		            newModel.getCreateddate(), newModel.getCreatedby(), newModel.getStatus());
+	}
+
+	@Override
+	public List<UserModel> findAllKhachHang() {
+		String sql ="select * from  Users where idUser LIKE 'KH%' and status ='1' "; 
+		return query(sql, new UserMapper());
+	}
+
+	@Override
+	public List<UserModel> findAllBacSi() {
+		String sql ="select * from  Users where idUser LIKE 'BS%' and status ='1' "; 
+		return query(sql, new UserMapper());
+	}
+
+	@Override
+	public List<UserModel> findAllNhanVien() {
+		String sql ="select * from  Users where idUser LIKE 'NV%' and status ='1' "; 
+		return query(sql, new UserMapper());
+	}
+
+	@Override
+	public Long DangKiTaiKhoan(String tenuser, String userName, String password, String email) {
+		String sql = "{CALL InsertUser_KhachHang(?, ?, ?, ?)}";
+	    return insert(sql, tenuser.toString(),
+	    		userName, password,email);
+	}
+
+
+
+
+	
+
+
+}

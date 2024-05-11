@@ -1,0 +1,48 @@
+package com.petshop.controller.admin;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.petshop.constant.SystemConstant;
+import com.petshop.model.UserModel;
+import com.petshop.paging.PageRequest;
+import com.petshop.paging.Pageble;
+import com.petshop.service.IUserService;
+import com.petshop.sort.Sorter;
+import com.petshop.utils.FormUtil;
+import com.petshop.utils.MessageUtil;
+@WebServlet(urlPatterns= {"/admin-nhanVien"})
+public class nhanVienController extends HttpServlet{
+	@Inject
+	private IUserService userService;
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		UserModel model = FormUtil.toModel(UserModel.class, req);
+		String view="";
+		if(model.getType().equals(SystemConstant.LIST)) {
+			Pageble pageble = new PageRequest(model.getPage(), model.getMaxPageItem(), new Sorter(model.getSortName(), model.getSortBy()));
+			model.setListResult(userService.findAllNhanVien(pageble));
+			model.setTotalItem(userService.getTotalItemNhanVien());
+			model.setTotalPage((int) Math.ceil((double) model.getTotalItem()/model.getMaxPageItem()));
+			view ="/views/admin/nhanVien/list.jsp";
+		}else if(model.getType().equals(SystemConstant.EDIT)) {
+			System.out.println(model.getIdUser());
+			if(model.getIdUser()!=null) {
+				model = userService.findOneNhanVien(model.getIdUser());
+			}
+			view="/views/admin/nhanVien/edit.jsp";
+		}
+		
+		MessageUtil.showMessage(req);
+		req.setAttribute(SystemConstant.MODEL, model);
+		RequestDispatcher rd = req.getRequestDispatcher(view);
+		rd.forward(req, resp);
+
+	}
+}

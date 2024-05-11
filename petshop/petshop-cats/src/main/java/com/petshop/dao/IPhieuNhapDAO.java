@@ -1,0 +1,16 @@
+package com.petshop.dao;
+
+import java.util.List;
+
+import com.petshop.model.PhieuNhapModel;
+import com.petshop.paging.Pageble;
+
+public interface IPhieuNhapDAO {
+	List<PhieuNhapModel> findAllPhieuNhap(Pageble pageble);
+	int getToltalItemPhieuNhap();
+	PhieuNhapModel findOnePhieuNhap(String maPN);
+	List<PhieuNhapModel> findAllPhieuNhap();
+	Long savePhieuNhap(PhieuNhapModel newModel);
+	PhieuNhapModel findOnePhieuNhap(Long newId);
+	void updatePhieuNhap(PhieuNhapModel updateModel);
+}

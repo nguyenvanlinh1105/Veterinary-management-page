@@ -1,0 +1,76 @@
+package com.petshop.model;
+
+public class DonHangCartModel {
+	private String maDonHang;
+	private String idDichVu;
+	private String tenDichVu;
+	private int soLuong;
+	private float donGia;
+	private float thanhTien;
+	private String sdtGiaoHang;
+	private String diaChiGiaoHang;
+	public DonHangCartModel(String maDonHang, String idDichVu, String tenDichVu, int soLuong, float donGia,
+			float thanhTien, String sdtGiaoHang, String diaChiGiaoHang) {
+		super();
+		this.maDonHang = maDonHang;
+		this.idDichVu = idDichVu;
+		this.tenDichVu = tenDichVu;
+		this.soLuong = soLuong;
+		this.donGia = donGia;
+		this.thanhTien = thanhTien;
+		this.sdtGiaoHang = sdtGiaoHang;
+		this.diaChiGiaoHang = diaChiGiaoHang;
+	}
+	public DonHangCartModel() {
+		super();
+	}
+	public String getMaDonHang() {
+		return maDonHang;
+	}
+	public void setMaDonHang(String maDonHang) {
+		this.maDonHang = maDonHang;
+	}
+	public String getIdDichVu() {
+		return idDichVu;
+	}
+	public void setIdDichVu(String idDichVu) {
+		this.idDichVu = idDichVu;
+	}
+	public String getTenDichVu() {
+		return tenDichVu;
+	}
+	public void setTenDichVu(String tenDichVu) {
+		this.tenDichVu = tenDichVu;
+	}
+	public int getSoLuong() {
+		return soLuong;
+	}
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+	public float getDonGia() {
+		return donGia;
+	}
+	public void setDonGia(float donGia) {
+		this.donGia = donGia;
+	}
+	public float getThanhTien() {
+		return thanhTien;
+	}
+	public void setThanhTien(float thanhTien) {
+		this.thanhTien = thanhTien;
+	}
+	public String getSdtGiaoHang() {
+		return sdtGiaoHang;
+	}
+	public void setSdtGiaoHang(String sdtGiaoHang) {
+		this.sdtGiaoHang = sdtGiaoHang;
+	}
+	public String getDiaChiGiaoHang() {
+		return diaChiGiaoHang;
+	}
+	public void setDiaChiGiaoHang(String diaChiGiaoHang) {
+		this.diaChiGiaoHang = diaChiGiaoHang;
+	}
+		
+}

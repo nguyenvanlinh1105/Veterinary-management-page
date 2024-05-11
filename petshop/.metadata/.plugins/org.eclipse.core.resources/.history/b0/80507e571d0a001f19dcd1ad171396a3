@@ -1,0 +1,32 @@
+package com.petshop.service.impl;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import com.petshop.dao.IChiTietPhieuNhapDAO;
+import com.petshop.model.ChiTietPhieuNhapModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.IChiTietPhieuNhapService;
+
+public class ChiTietPhieuNhapService  implements IChiTietPhieuNhapService{
+
+	@Inject 
+	private IChiTietPhieuNhapDAO chiTietPhieuNhapDAO;
+	@Override
+	public List<ChiTietPhieuNhapModel> findAllChiTietPhieuNhap(Pageble pageble) {
+		return chiTietPhieuNhapDAO.findAllChiTietPhieuNhap(pageble);
+	}
+
+	@Override
+	public int getToltalItemChiTietPhieuNhap() {
+		return chiTietPhieuNhapDAO.getToltalItemChiTietPhieuNhap();
+	}
+
+	@Override
+	public ChiTietPhieuNhapModel findOneChiTietPhieu(String maPN) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

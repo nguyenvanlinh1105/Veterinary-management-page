@@ -1,0 +1,46 @@
+package com.petshop.controller.admin;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.petshop.constant.SystemConstant;
+import com.petshop.model.DonHangCartModel;
+import com.petshop.model.UserModel;
+import com.petshop.service.IDonHangCartService;
+import com.petshop.service.IUserService;
+import com.petshop.utils.FormUtil;
+import com.petshop.utils.MessageUtil;
+import com.petshop.utils.SessionUtil;
+@WebServlet(urlPatterns= {"/admin-paycart"})
+public class PayServiceController extends HttpServlet{
+	@Inject
+	private IDonHangCartService donHangCartService;
+	@Inject
+	private IUserService userService;
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		 UserModel model = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
+		 DonHangCartModel dhmodel = new DonHangCartModel();
+		 UserModel modelUser = FormUtil.toModel(UserModel.class, req);
+		 String view="";
+		 if(model!=null) {
+				view ="/views/admin/paycart/paycart.jsp";
+			dhmodel.setListResult(donHangCartService.findAllDichVuCartByIdUser(modelUser.getIdUser())); 
+			MessageUtil.showMessage(req);
+			req.setAttribute(SystemConstant.MODEL, dhmodel);
+			req.setAttribute("tongTien", donHangCartService.TinhTongTien());
+			req.setAttribute("khachHang",userService.findOneKhachHang(modelUser.getIdUser()) );
+			RequestDispatcher rd = req.getRequestDispatcher(view);
+			rd.forward(req, resp);
+			
+		 }else {
+			 resp.sendRedirect(req.getContextPath()+"/dang-nhap?action=login");
+		 }
+	}
+}

@@ -1,0 +1,97 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="UTF-8">
+<title>Đăng kí</title>
+</head>
+<body>
+	<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card" style=" height: 500px;
+			    margin-top: auto;
+			    margin-bottom: auto;
+			    width: 400px;
+			    background-color: rgba(0, 0, 0, 0.5) !important;">
+			<div class="card-header">
+				<h3>Đăng Kí</h3>
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fab fa-facebook-square"></i></span>
+					<span><i class="fab fa-google-plus-square"></i></span>
+					<span><i class="fab fa-twitter-square"></i></span>
+				</div>
+			</div>
+			<div class="card-body">
+				<c:if test="${not empty message }">
+					<div class="alert alert-${alert}">
+		 		 		<strong>${message}</strong>
+					</div>
+				</c:if>
+				
+				<form accept-charset="UTF-8" action="<c:url value='/dang-ki'/>" id="formSignUp" method="POST">
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+							
+						</div>
+						<div class="col-sm-10 text-secondary">
+							<input type="text" id="tenuser" name="tenuser" class="form-control" value="${user.password}">
+						</div>
+							
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Tên tài khoản" name="userName">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="Mật khẩu" name="password">
+					</div>
+				
+					<div class="input-group form-group">
+					    <div class="input-group-prepend">
+					        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+					    </div>
+					    <input type="email" class="form-control" placeholder="Nhập email của bạn" name="email">
+					</div>
+					
+					<div class="form-group">
+						<input type="submit" value="Đăng kí" class="btn float-right login_btn">
+					</div>
+					<input type="hidden" value="signup" id="page" name="action">
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Bạn đã có tài khoản ?<a href="<c:url value='/dang-nhap?action=login'/>">Đăng nhập</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a href="#">Bạn quên mật khẩu?</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('formSignUp').addEventListener('submit', function (event) {
+        event.preventDefault(); // Ngăn chặn form gửi dữ liệu đi
+        console.log('Họ và tên:', document.getElementsByName('tenuser')[0].value);
+        console.log('Tên tài khoản:', document.getElementsByName('userName')[0].value);
+        console.log('Mật khẩu:', document.getElementsByName('password')[0].value);
+        console.log('Email:', document.getElementsByName('email')[0].value);
+        
+        // Tiếp tục với việc gửi dữ liệu đi hoặc xử lý dữ liệu ở đây nếu cần
+    });
+});
+</script>
+</html>

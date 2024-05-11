@@ -1,0 +1,44 @@
+package com.petshop.controller.web;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.petshop.constant.SystemConstant;
+import com.petshop.model.ThuCungModel;
+import com.petshop.model.UserModel;
+import com.petshop.service.IThuCungService;
+import com.petshop.utils.FormUtil;
+import com.petshop.utils.SessionUtil;
+@WebServlet(urlPatterns= {"/web-addpet"})
+public class PetController extends HttpServlet{
+	@Inject
+	private IThuCungService thuCungService;
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		 UserModel model = (UserModel) SessionUtil.getInstance().getValue(req, "USERMODEL");
+		 ThuCungModel modelTC = FormUtil.toModel(ThuCungModel.class, req);
+		 if(model!=null) {
+			 if(req.getParameter("type").equals(SystemConstant.EDIT)) {
+				 String view="";
+					view ="/views/user/pet/pet.jsp";
+				req.setAttribute("model", thuCungService.findOneThuCung(modelTC.getIdThuCung()));
+				RequestDispatcher rd = req.getRequestDispatcher(view);
+				rd.forward(req, resp);
+			}
+			 
+		 }else {
+			 resp.sendRedirect(req.getContextPath()+"/dang-nhap?action=login");
+		 }
+		
+		
+	}
+	
+	
+}

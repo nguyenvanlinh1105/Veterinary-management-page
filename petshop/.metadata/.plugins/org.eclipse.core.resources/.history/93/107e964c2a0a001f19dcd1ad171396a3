@@ -1,0 +1,49 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+
+import com.petshop.dao.IPhieuNhapDAO;
+import com.petshop.mapper.PhieuNhapMapper;
+import com.petshop.model.PhieuNhapModel;
+import com.petshop.paging.Pageble;
+
+public class PhieuNhapDAO extends AbstractDAO<PhieuNhapModel>  implements IPhieuNhapDAO{
+
+	@Override
+	public List<PhieuNhapModel> findAllPhieuNhap(Pageble pageble) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM PhieuNhap");
+		if(pageble.getSorter() !=null) {
+			sql.append(" ORDER BY ")
+			.append(pageble.getSorter().getSortName())
+			.append(" ")
+			.append(pageble.getSorter().getSortBy());
+		}
+		 if (pageble.getOffset() != null && pageble.getLimit() != null) {
+		        sql.append(" OFFSET ")
+		           .append(pageble.getOffset())
+		           .append(" ROWS FETCH NEXT ")
+		           .append(pageble.getLimit())
+		           .append(" ROWS ONLY");
+		    }
+
+		return query(sql.toString(), new PhieuNhapMapper());
+	}
+
+	@Override
+	public int getToltalItemPhieuNhap() {
+		String sql = "Select count(*) from dbo.PhieuNhap";
+		return count(sql);
+	}
+
+	
+	@Override
+	public PhieuNhapModel findOnePhieuNhap(String maPN) {
+		String sql = "select * from PhieuNhap WHERE maPN = ?";
+		List<PhieuNhapModel> pnList = query(sql, new PhieuNhapMapper(), maPN);
+		    if (!pnList.isEmpty()) {
+		        return pnList.get(0);
+		    }
+		    return null; 
+	}
+
+}

@@ -1,0 +1,122 @@
+package com.petshop.dao.impl;
+
+import java.util.List;
+
+import com.petshop.dao.IDonHangDAO;
+import com.petshop.mapper.DonHangMapper;
+import com.petshop.mapper.UserMapper;
+import com.petshop.model.DonHangModel;
+import com.petshop.model.UserModel;
+import com.petshop.paging.Pageble;
+
+public class DonHangDAO extends AbstractDAO<DonHangModel> implements IDonHangDAO{
+
+
+	@Override
+	public DonHangModel findOneDonHang(String maDonHang) {
+		String sql = "select * from DonHang WHERE maDonHang = ?";
+		List<DonHangModel> userList = query(sql, new DonHangMapper(), maDonHang);
+		    if (!userList.isEmpty()) {
+		        return userList.get(0);
+		    }
+		    return null; 
+	}
+
+
+
+
+	@Override
+	public List<DonHangModel> findAllDonHang(Pageble pageble) {
+		StringBuilder sql = new StringBuilder("SELECT * FROM DonHang");
+		 
+	    if (pageble.getSorter() != null) {
+	        sql.append(" ORDER BY ")
+	           .append(pageble.getSorter().getSortName())
+	           .append(" ")
+	           .append(pageble.getSorter().getSortBy());
+	    }
+
+	    if (pageble.getOffset() != null && pageble.getLimit() != null) {
+	        sql.append(" OFFSET ")
+	           .append(pageble.getOffset())
+	           .append(" ROWS FETCH NEXT ")
+	           .append(pageble.getLimit())
+	           .append(" ROWS ONLY");
+	    }
+
+	    return query(sql.toString(), new DonHangMapper());
+	}
+
+	@Override
+	public Integer getTotalItemDonHang() {
+		String sql = "Select count(*) from dbo.DonHang";
+		return count(sql);
+	}
+
+
+	@Override
+	public Long saveDonHang(DonHangModel newDonHang) {
+		 String sql = "{CALL InsertDonHang(?, ?, ?, ?, ?, ?, ?)}";
+	    return insert(sql, newDonHang.getIdKhachHang(),
+	    		newDonHang.getSdtGiaoHang(), newDonHang.getDiaChiGiaoHang(),
+	    		newDonHang.getNgayGiaoHang(), newDonHang.getTrangThai(), 
+	    		newDonHang.getCreateddate(), newDonHang.getCreatedby());
+	}
+
+
+	@Override
+	public DonHangModel findOneDonHangId(Long Id) {
+		String sql = "select * from DonHang WHERE maDonHang = 'DH001'";
+		List<DonHangModel> userList = query(sql, new DonHangMapper());
+		    if (!userList.isEmpty()) {
+		        return userList.get(0);
+		    }
+		    return null;
+	}
+
+
+	@Override
+	public void updateDichVu(DonHangModel updateDonHang) {
+		 String sql = "{CALL UpdateDonHang(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)}";
+		 update(sql, 
+				 updateDonHang.getMaDonHang(),
+				 updateDonHang.getSdtGiaoHang(), 
+				 updateDonHang.getDiaChiGiaoHang(), 
+				 updateDonHang.getNgayGiaoHang(), 
+				 updateDonHang.getPhThucThanhToan(), 
+				 updateDonHang.getNgayThanhToan(), 
+				 updateDonHang.getTrangThai(), 
+				 updateDonHang.getCreateddate(),
+				 updateDonHang.getModifieddate(), 
+				 updateDonHang.getCreatedby(),
+				 updateDonHang.getModifiedby());
+	}
+
+
+	@Override
+	public void deleteDichVu(String id) {
+		String sql = "{CALL DeleteDonHang (?)}";
+		update(sql, id);
+		
+	}
+
+
+
+
+	@Override
+	public List<DonHangModel> findAllDonHang() {
+		String sql ="Select * from dbo.DonHang";
+		return query(sql, new DonHangMapper());
+	}
+
+
+	@Override
+	public Long saveDonHangTV(DonHangModel donHangTVModel) {
+		 String sql = "{CALL InsertDonHangTuVan(?, ?, ?, ?, ?)}";
+		    return insert(sql, donHangTVModel.getIdKhachHang(),
+		    		donHangTVModel.getSdtGiaoHang(), donHangTVModel.getDiaChiGiaoHang(), 
+		    		donHangTVModel.getCreateddate(), donHangTVModel.getCreatedby());
+	}
+
+
+}

@@ -1,0 +1,48 @@
+package com.petshop.mapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.petshop.model.RoleModel;
+import com.petshop.model.UserModel;
+
+public class UserMapper implements RowMapper<UserModel>{
+
+	@Override
+	public UserModel mapRow(ResultSet resultSet) {
+		UserModel users;
+		try {
+			users = new UserModel();
+			users.setIdUser(resultSet.getString("idUser"));
+			users.setUserName(resultSet.getString("userName"));
+			users.setTenuser(resultSet.getString("tenuser"));
+			users.setPassword(resultSet.getString("password"));
+			users.setPassword(resultSet.getString("loaiuser"));
+			
+			if(resultSet.getTimestamp("modifieddate")!=null) {
+				news.setModifieddate(resultSet.getTimestamp("modifieddate"));
+			}else {
+				news.setCreateddate(resultSet.getTimestamp("createddate"));
+			}
+			if(resultSet.getString("modifiedby")!=null) {
+				news.setModifiedby(resultSet.getString("modifiedby"));
+			}else {
+				news.setCreatedby(resultSet.getString("createdby"));
+			}
+			users.setStatus(resultSet.getInt("status"));
+			try {
+				RoleModel role = new RoleModel();
+				role.setCode(resultSet.getString("code"));
+				role.setName(resultSet.getString("name"));
+				users.setRole(role);
+			}catch(Exception e) {
+				System.out.print(e.getMessage());
+			}
+			
+			return users;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+}

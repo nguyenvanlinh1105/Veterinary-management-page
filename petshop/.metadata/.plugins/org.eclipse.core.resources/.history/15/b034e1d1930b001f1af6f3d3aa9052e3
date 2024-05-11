@@ -1,0 +1,58 @@
+package com.petshop.service.impl;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import com.petshop.dao.IPhieuNhapDAO;
+import com.petshop.model.PhieuNhapModel;
+import com.petshop.paging.Pageble;
+import com.petshop.service.IPhieuNhapService;
+
+public class PhieuNhapService implements IPhieuNhapService {
+	@Inject 
+	private IPhieuNhapDAO phieuNhapDAO;
+	@Override
+	public List<PhieuNhapModel> findAllPhieuNhap(Pageble pageble) {
+		
+		return phieuNhapDAO.findAllPhieuNhap(pageble);
+	}
+
+	@Override
+	public Integer getToltalItemPhieuNhap() {
+		
+		return phieuNhapDAO.getToltalItemPhieuNhap();
+	}
+
+	@Override
+	public PhieuNhapModel findOnePhieuNhap(String maPN) {
+		return phieuNhapDAO.findOnePhieuNhap(maPN);
+	}
+
+	@Override
+	public List<PhieuNhapModel> findAllPhieuNhap() {
+		return phieuNhapDAO.findAllPhieuNhap();
+	}
+
+	@Override
+	public PhieuNhapModel savePhieuNhap(PhieuNhapModel newModel) {
+		newModel.setCreateddate(new Timestamp(System.currentTimeMillis()));
+		Long newId= phieuNhapDAO.savePhieuNhap(newModel);
+		return phieuNhapDAO.findOnePhieuNhap(newId);
+	}
+
+	@Override
+	public PhieuNhapModel updatePhieuNhap(PhieuNhapModel updateModel) {
+		updateModel.setModifieddate(new Timestamp(System.currentTimeMillis()));
+		phieuNhapDAO.updatePhieuNhap(updateModel);
+		return phieuNhapDAO.findOnePhieuNhap(updateModel.getMaPN());
+	}
+
+	@Override
+	public void deletePhieuNhap(String[] ids) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

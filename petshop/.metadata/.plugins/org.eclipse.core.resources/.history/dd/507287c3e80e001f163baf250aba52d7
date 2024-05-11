@@ -1,0 +1,42 @@
+package com.petshop.model;
+
+public class InforPetUserModel extends AbstractModel<InforPetUserModel>{
+	private String idKhachHang;
+	private String tenThuCung;
+	private String gioiTinh;
+	private String loaiThuCung;
+	private int tuoi;
+	public String getIdKhachHang() {
+		return idKhachHang;
+	}
+	public void setIdKhachHang(String idKhachHang) {
+		this.idKhachHang = idKhachHang;
+	}
+	public String getTenThuCung() {
+		return tenThuCung;
+	}
+	public void setTenThuCung(String tenThuCung) {
+		this.tenThuCung = tenThuCung;
+	}
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
+	}
+	public String getLoaiThuCung() {
+		return loaiThuCung;
+	}
+	public void setLoaiThuCung(String loaiThuCung) {
+		this.loaiThuCung = loaiThuCung;
+	}
+	public int getTuoi() {
+		return tuoi;
+	}
+	public void setTuoi(int tuoi) {
+		this.tuoi = tuoi;
+	}
+	
+	
+	
+}

@@ -1,0 +1,34 @@
+package com.petshop.mapper;
+
+import java.sql.ResultSet;
+
+import com.petshop.model.UserModel;
+
+public class UserMapper implements RowMapper<UserModel>{
+
+	@Override
+	public UserModel mapRow(ResultSet resultSet) {
+		UserModel users;
+		try {
+			users = new UserModel();
+			users.setIdUser(resultSet.getString("idUser"));
+			users.setUserName(resultSet.getString("userName"));
+			users.setTenuser(resultSet.getString("tenuser"));
+			users.setPassword(resultSet.getString("password"));
+			users.set(resultSet.getInt("status"));
+			try {
+				roleModel role = new roleModel();
+				role.setCode(resultSet.getString("code"));
+				role.setName(resultSet.getString("name"));
+				users.setRole(role);
+			}catch(Exception e) {
+				System.out.print(e.getMessage());
+			}
+			
+			return users;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+}

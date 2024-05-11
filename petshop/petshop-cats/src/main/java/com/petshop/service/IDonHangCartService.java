@@ -1,0 +1,17 @@
+package com.petshop.service;
+
+import java.util.List;
+
+import com.petshop.model.DonHangCartModel;
+
+public interface IDonHangCartService {
+
+	List<DonHangCartModel> findAllDichVuCartByIdUser(String idUser);
+
+	Double TinhTongTien();
+
+	List<DonHangCartModel> findAllDichVuCartByIdUserChuaThanhToan(String idUser);
+
+	void updateTrangThaiDonHangDichVu(String[] ids, String idUser, String phThucThanhToan);
+
+}

@@ -1,0 +1,7 @@
+package com.petshop.service.impl;
+
+import com.petshop.service.IDatDichVuService;
+
+public class DatDichVuService implements IDatDichVuService {
+
+}

@@ -1,0 +1,32 @@
+package com.petshop.service.impl;
+
+import java.sql.Timestamp;
+
+import com.petshop.dao.IInforPetUserDAO;
+import com.petshop.model.InforPetUserModel;
+import com.petshop.service.IInforPetUserService;
+
+public class InforPetUserService implements IInforPetUserService{
+
+	@Inject 
+	private IInforPetUserDAO inforPetUserDAO;
+	@Override
+	public InforPetUserModel savePetUser(InforPetUserModel newModel) {
+		newModel.setCreateddate(new Timestamp(System.currentTimeMillis()));
+		 inforPetUserDAO.savePetUser(newModel);
+		return inforPetUserDAO.findOneDonHangId(newId);
+	}
+
+	@Override
+	public InforPetUserModel updatePetUser(InforPetUserModel updatePet) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deletePet(String[] ids) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
